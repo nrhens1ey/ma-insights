@@ -38,14 +38,17 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#"><i class="fas fa-chart-line me-2"></i>M&A Insights</a>
+            <a class="navbar-brand" href="index.html">M&A Insights</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="market-overview.html">Market Overview</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="scratch.html">Analysis</a>
@@ -87,16 +90,19 @@
                 </div>
             </div>
             <div class="row g-4">
+                <!-- TMT -->
                 <div class="col-lg-4 col-md-6">
                     <div class="card sector-card h-100">
                         <div class="card-body text-center p-4">
-                            <i class="fas fa-microchip text-primary mb-3" style="font-size: 3rem;"></i>
+                            <i class="fas fa-broadcast-tower text-primary mb-3" style="font-size: 3rem;"></i>
                             <h4 class="card-title">Technology, Media & Telecom</h4>
-                            <p class="card-text">Analysis of digital transformation deals, fintech acquisitions, and media consolidation trends.</p>
+                            <p class="card-text">Analysis of streaming wars, 5G infrastructure deals, gaming metaverse, and digital transformation trends.</p>
                             <a href="sectors/tmt.html" class="btn btn-primary">Explore TMT</a>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Healthcare -->
                 <div class="col-lg-4 col-md-6">
                     <div class="card sector-card h-100">
                         <div class="card-body text-center p-4">
@@ -107,45 +113,53 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Financial Services -->
                 <div class="col-lg-4 col-md-6">
-    <div class="card sector-card h-100">
-        <div class="card-body text-center p-4">
-            <i class="fas fa-university text-primary mb-3" style="font-size: 3rem;"></i>
-            <h4 class="card-title">Financial Services</h4>
-            <p class="card-text">Banking consolidation, fintech acquisitions, insurance mergers, and asset management deals.</p>
-            <a href="sectors/financial.html" class="btn btn-primary">Explore Financial</a>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-6">
-    <div class="card sector-card h-100">
-        <div class="card-body text-center p-4">
-            <i class="fas fa-laptop-code text-primary mb-3" style="font-size: 3rem;"></i>
-            <h4 class="card-title">Technology</h4>
-            <p class="card-text">Software acquisitions, cloud infrastructure deals, AI/ML company mergers, and tech platform consolidation.</p>
-            <a href="sectors/technology.html" class="btn btn-primary">Explore Technology</a>
-        </div>
-    </div>
-<div class="col-lg-4 col-md-6">
-    <div class="card sector-card h-100">
-        <div class="card-body text-center p-4">
-            <i class="fas fa-rocket text-primary mb-3" style="font-size: 3rem;"></i>
-            <h4 class="card-title">Aerospace & Defense + Energy Infrastructure</h4>
-            <p class="card-text">Defense modernization, space commercialization, renewable energy transition, and critical infrastructure investment cycles.</p>
-            <a href="sectors/aerospace-energy.html" class="btn btn-primary">Explore A&D + Energy</a>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-6">
-    <div class="card sector-card h-100">
-        <div class="card-body text-center p-4">
-            <i class="fas fa-shopping-cart text-primary mb-3" style="font-size: 3rem;"></i>
-            <h4 class="card-title">Consumer & Retail</h4>
-            <p class="card-text">E-commerce platform consolidation, direct-to-consumer brand roll-ups, and supply chain technology acquisitions.</p>
-            <a href="sectors/consumer-retail.html" class="btn btn-primary">Explore Consumer</a>
-        </div>
-    </div>
-</div>
+                    <div class="card sector-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-university text-primary mb-3" style="font-size: 3rem;"></i>
+                            <h4 class="card-title">Financial Services</h4>
+                            <p class="card-text">Banking consolidation, fintech acquisitions, insurance mergers, and asset management deals.</p>
+                            <a href="sectors/financial.html" class="btn btn-primary">Explore Financial</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technology -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card sector-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-laptop-code text-primary mb-3" style="font-size: 3rem;"></i>
+                            <h4 class="card-title">Technology</h4>
+                            <p class="card-text">Software acquisitions, data hardware deals, AI/ML company mergers, and tech platform consolidation.</p>
+                            <a href="sectors/technology.html" class="btn btn-primary">Explore Technology</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Aerospace & Defense + Energy -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card sector-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-rocket text-primary mb-3" style="font-size: 3rem;"></i>
+                            <h4 class="card-title">Aerospace & Defense + Energy</h4>
+                            <p class="card-text">Defense modernization, space commercialization, renewable energy transition, and critical infrastructure investment cycles.</p>
+                            <a href="sectors/aerospace-energy.html" class="btn btn-primary">Explore A&D + Energy</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Consumer & Retail -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card sector-card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-shopping-cart text-primary mb-3" style="font-size: 3rem;"></i>
+                            <h4 class="card-title">Consumer & Retail</h4>
+                            <p class="card-text">E-commerce platform consolidation, direct-to-consumer brand roll-ups, and supply chain technology acquisitions.</p>
+                            <a href="sectors/consumer-retail.html" class="btn btn-primary">Explore Consumer</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -163,19 +177,53 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-primary">Tech Consolidation Continues</h5>
-                            <p class="card-text">Enterprise software acquisitions reach new highs as companies seek AI capabilities and cloud infrastructure.</p>
-                            <small class="text-muted">Deal Value: $50B+ in Q1 2025</small>
+                            <h5 class="card-title text-primary">Netflix's $12.8B Content Studio Acquisition</h5>
+                            <p class="card-text">Streaming wars intensify as Netflix acquires MegaContent for exclusive film franchises and production capabilities.</p>
+                            <small class="text-muted">TMT Sector | June 2025</small>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-primary">Healthcare Innovation</h5>
-                            <p class="card-text">Pharmaceutical giants acquire biotech firms developing breakthrough therapies and personalized medicine.</p>
-                            <small class="text-muted">Deal Value: $75B+ YTD</small>
+                            <h5 class="card-title text-primary">NextEra's $11.2B Renewable Energy Platform</h5>
+                            <p class="card-text">Massive renewable energy consolidation creates America's largest clean energy portfolio with 23GW operating capacity.</p>
+                            <small class="text-muted">A&D + Energy Sector | June 2025</small>
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">Shopify's $9.7B E-commerce Platform Merger</h5>
+                            <p class="card-text">E-commerce infrastructure consolidation as Shopify acquires BigCommerce to dominate merchant solutions.</p>
+                            <small class="text-muted">Consumer & Retail Sector | June 2025</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">Dell's $7.2B Data Hardware Mega-Deal</h5>
+                            <p class="card-text">AI infrastructure boom drives Dell's acquisition of PureScale for edge computing and machine learning storage solutions.</p>
+                            <small class="text-muted">Technology Sector | June 2025</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Overview CTA -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="p-5 bg-primary text-white rounded">
+                        <h3 class="mb-3">Comprehensive M&A Market Intelligence</h3>
+                        <p class="lead mb-4">Access our executive dashboard with global deal volume trends, sector performance metrics, and cross-industry analysis.</p>
+                        <a href="market-overview.html" class="btn btn-light btn-lg me-3">View Market Overview</a>
+                        <a href="app.html" class="btn btn-outline-light btn-lg">Try Deal Calculator</a>
                     </div>
                 </div>
             </div>
@@ -186,8 +234,17 @@
     <footer class="bg-dark text-white py-4">
         <div class="container">
             <div class="row">
-                <div class="col-12 text-center">
-                    <p>&copy; 2025 M&A Insights. Professional analysis for educational purposes.</p>
+                <div class="col-md-6">
+                    <h5>M&A Insights</h5>
+                    <p>Professional analysis and insights across all major M&A sectors and market dynamics.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="d-flex justify-content-end gap-3">
+                        <a href="market-overview.html" class="text-white text-decoration-none">Market Overview</a>
+                        <a href="scratch.html" class="text-white text-decoration-none">Analysis</a>
+                        <a href="app.html" class="text-white text-decoration-none">Calculator</a>
+                        <a href="resume.html" class="text-white text-decoration-none">Resume</a>
+                    </div>
                 </div>
             </div>
         </div>
