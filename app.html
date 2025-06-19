@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&A Deal Valuation Calculator | M&A Insights</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .calculator-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            margin: 40px auto;
+            max-width: 900px;
+        }
+        
+        .calculator-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px 20px 0 0;
+            text-align: center;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .form-control {
+            border: 2px solid #e3f2fd;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #2a5298;
+            box-shadow: 0 0 0 0.2rem rgba(42, 82, 152, 0.25);
+        }
+        
+        .btn-calculate {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 25px;
+            color: white;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        .btn-calculate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+            color: white;
+        }
+        
+        .results-section {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f5f5f5 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            border: 2px solid #2a5298;
+        }
+        
+        .result-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 5px solid #2a5298;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .result-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e3c72;
+        }
+        
+        .result-label {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .method-tabs {
+            margin-bottom: 30px;
+        }
+        
+        .nav-pills .nav-link {
+            border-radius: 25px;
+            padding: 12px 24px;
+            margin: 0 10px;
+            font-weight: 600;
+        }
+        
+        .nav-pills .nav-link.active {
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+        }
+        
+        .sector-selector {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .assumptions-section {
+            background: #fff3e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">M&A Insights</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="scratch.html">Analysis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="app.html">Calculator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resume.html">Resume</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="calculator-container">
+            <!-- Header -->
+            <div class="calculator-header">
+                <h1>M&A Deal Valuation Calculator</h1>
+                <p class="mb-0">Professional-grade valuation tool for merger and acquisition analysis</p>
+            </div>
+
+            <!-- Calculator Content -->
+            <div class="p-4">
+                <!-- Valuation Method Dropdown -->
+                <div class="method-selector mb-4">
+                    <label for="methodSelect" class="form-label fw-bold">Select Valuation Method:</label>
+                    <select class="form-control" id="methodSelect" onchange="switchMethod()">
+                        <option value="dcf">DCF Analysis</option>
+                        <option value="multiples">Trading Multiples</option>
+                        <option value="precedent">Precedent Transactions</option>
+                    </select>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="method-content">
+                    <!-- DCF Analysis Section -->
+                    <div id="dcf" class="method-section">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="sector-selector">
+                                    <label for="sector">Industry Sector</label>
+                                    <select class="form-control" id="sector">
+                                        <option value="tech">Technology</option>
+                                        <option value="healthcare">Healthcare</option>
+                                        <option value="industrial">Industrial</option>
+                                        <option value="tmt">TMT</option>
+                                        <option value="financial">Financial Services</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="revenue">Annual Revenue ($M)</label>
+                                    <input type="number" class="form-control" id="revenue" placeholder="100" min="0">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="ebitda">EBITDA ($M)</label>
+                                    <input type="number" class="form-control" id="ebitda" placeholder="25" min="0">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="growthRate">Revenue Growth Rate (%)</label>
+                                    <input type="number" class="form-control" id="growthRate" placeholder="15" min="0" max="100" step="0.1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="discountRate">Discount Rate (WACC) (%)</label>
+                                    <input type="number" class="form-control" id="discountRate" placeholder="10" min="0" max="50" step="0.1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="terminalGrowth">Terminal Growth Rate (%)</label>
+                                    <input type="number" class="form-control" id="terminalGrowth" placeholder="3" min="0" max="10" step="0.1">
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <label for="capex">Annual CapEx ($M)</label>
+                                    <input type="number" class="form-control" id="capex" placeholder="5" min="0">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="workingCapital">Working Capital Change ($M)</label>
+                                    <input type="number" class="form-control" id="workingCapital" placeholder="2" step="0.1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="taxRate">Tax Rate (%)</label>
+                                    <input type="number" class="form-control" id="taxRate" placeholder="25" min="0" max="50" step="0.1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="debt">Total Debt ($M)</label>
+                                    <input type="number" class="form-control" id="debt" placeholder="50" min="0">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="cash">Cash & Equivalents ($M)</label>
+                                    <input type="number" class="form-control" id="cash" placeholder="10" min="0">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="shares">Shares Outstanding (M)</label>
+                                    <input type="number" class="form-control" id="shares" placeholder="100" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-calculate" onclick="calculateDCF()">
+                            Calculate DCF Valuation
+                        </button>
+                    </div>
+
+                    <!-- Trading Multiples Section -->
+                    <div id="multiples" class="method-section" style="display: none;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <label for="multipleRevenue">Annual Revenue ($M)</label>
+                                    <input type="number" class="form-control" id="multipleRevenue" placeholder="100" min="0">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="multipleEbitda">EBITDA ($M)</label>
+                                    <input type="number" class="form-control" id="multipleEbitda" placeholder="25" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <label for="revenueMultiple">EV/Revenue Multiple</label>
+                                    <input type="number" class="form-control" id="revenueMultiple" placeholder="3.5" min="0" step="0.1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="ebitdaMultiple">EV/EBITDA Multiple</label>
+                                    <input type="number" class="form-control" id="ebitdaMultiple" placeholder="12" min="0" step="0.1">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-calculate" onclick="calculateMultiples()">
+                            Calculate Multiple Valuations
+                        </button>
+                    </div>
+
+                    <!-- Precedent Transactions Section -->
+                    <div id="precedent" class="method-section" style="display: none;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <label for="precedentRevenue">Annual Revenue ($M)</label>
+                                    <input type="number" class="form-control" id="precedentRevenue" placeholder="100" min="0">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="precedentEbitda">EBITDA ($M)</label>
+                                    <input type="number" class="form-control" id="precedentEbitda" placeholder="25" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <label for="precedentRevenueMultiple">Precedent EV/Revenue</label>
+                                    <input type="number" class="form-control" id="precedentRevenueMultiple" placeholder="4.2" min="0" step="0.1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="precedentEbitdaMultiple">Precedent EV/EBITDA</label>
+                                    <input type="number" class="form-control" id="precedentEbitdaMultiple" placeholder="15" min="0" step="0.1">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-calculate" onclick="calculatePrecedent()">
+                            Calculate Precedent Valuations
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-section" id="resultsSection" style="display: none;">
+                    <h3>Valuation Results</h3>
+                    <div id="resultsContent"></div>
+                    
+                    <div class="assumptions-section">
+                        <h5>Key Assumptions</h5>
+                        <p id="assumptionsText" class="mb-0"></p>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="text-center mt-4">
+                    <a href="scratch.html" class="btn btn-outline-primary me-3">
+                        View Deal Analysis
+                    </a>
+                    <a href="index.html" class="btn btn-outline-secondary">
+                        Back to Homepage
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Method Switching Function
+        function switchMethod() {
+            const selectedMethod = document.getElementById('methodSelect').value;
+            const sections = document.querySelectorAll('.method-section');
+            
+            // Hide all sections
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show selected section
+            document.getElementById(selectedMethod).style.display = 'block';
+        }
+
+        // DCF Calculation Function
+        function calculateDCF() {
+            const revenue = parseFloat(document.getElementById('revenue').value) || 0;
+            const ebitda = parseFloat(document.getElementById('ebitda').value) || 0;
+            const growthRate = parseFloat(document.getElementById('growthRate').value) / 100 || 0;
+            const discountRate = parseFloat(document.getElementById('discountRate').value) / 100 || 0.1;
+            const terminalGrowth = parseFloat(document.getElementById('terminalGrowth').value) / 100 || 0.03;
+            const capex = parseFloat(document.getElementById('capex').value) || 0;
+            const workingCapital = parseFloat(document.getElementById('workingCapital').value) || 0;
+            const taxRate = parseFloat(document.getElementById('taxRate').value) / 100 || 0.25;
+            const debt = parseFloat(document.getElementById('debt').value) || 0;
+            const cash = parseFloat(document.getElementById('cash').value) || 0;
+            const shares = parseFloat(document.getElementById('shares').value) || 1;
+
+            // Calculate 5-year projection
+            let fcfTotal = 0;
+            const ebitdaMargin = ebitda / revenue;
+            
+            for (let year = 1; year <= 5; year++) {
+                const projectedRevenue = revenue * Math.pow(1 + growthRate, year);
+                const projectedEbitda = projectedRevenue * ebitdaMargin;
+                const ebit = projectedEbitda; // Simplified
+                const taxes = ebit * taxRate;
+                const nopat = ebit - taxes;
+                const fcf = nopat - capex - workingCapital;
+                const presentValue = fcf / Math.pow(1 + discountRate, year);
+                fcfTotal += presentValue;
+            }
+
+            // Terminal Value
+            const terminalRevenue = revenue * Math.pow(1 + growthRate, 5) * (1 + terminalGrowth);
+            const terminalEbitda = terminalRevenue * ebitdaMargin;
+            const terminalFCF = terminalEbitda - capex - workingCapital;
+            const terminalValue = terminalFCF / (discountRate - terminalGrowth);
+            const presentTerminalValue = terminalValue / Math.pow(1 + discountRate, 5);
+
+            // Enterprise and Equity Value
+            const enterpriseValue = fcfTotal + presentTerminalValue;
+            const equityValue = enterpriseValue - debt + cash;
+            const pricePerShare = equityValue / shares;
+
+            displayResults({
+                method: 'DCF Analysis',
+                enterpriseValue: enterpriseValue,
+                equityValue: equityValue,
+                pricePerShare: pricePerShare,
+                assumptions: `Based on ${(growthRate*100).toFixed(1)}% revenue growth, ${(discountRate*100).toFixed(1)}% WACC, ${(terminalGrowth*100).toFixed(1)}% terminal growth`
+            });
+        }
+
+        // Trading Multiples Calculation
+        function calculateMultiples() {
+            const revenue = parseFloat(document.getElementById('multipleRevenue').value) || 0;
+            const ebitda = parseFloat(document.getElementById('multipleEbitda').value) || 0;
+            const revenueMultiple = parseFloat(document.getElementById('revenueMultiple').value) || 0;
+            const ebitdaMultiple = parseFloat(document.getElementById('ebitdaMultiple').value) || 0;
+
+            const revenueValuation = revenue * revenueMultiple;
+            const ebitdaValuation = ebitda * ebitdaMultiple;
+            const averageValuation = (revenueValuation + ebitdaValuation) / 2;
+
+            displayResults({
+                method: 'Trading Multiples',
+                revenueValuation: revenueValuation,
+                ebitdaValuation: ebitdaValuation,
+                averageValuation: averageValuation,
+                assumptions: `Using ${revenueMultiple}x revenue and ${ebitdaMultiple}x EBITDA multiples from comparable public companies`
+            });
+        }
+
+        // Precedent Transactions Calculation
+        function calculatePrecedent() {
+            const revenue = parseFloat(document.getElementById('precedentRevenue').value) || 0;
+            const ebitda = parseFloat(document.getElementById('precedentEbitda').value) || 0;
+            const revenueMultiple = parseFloat(document.getElementById('precedentRevenueMultiple').value) || 0;
+            const ebitdaMultiple = parseFloat(document.getElementById('precedentEbitdaMultiple').value) || 0;
+
+            const revenueValuation = revenue * revenueMultiple;
+            const ebitdaValuation = ebitda * ebitdaMultiple;
+            const averageValuation = (revenueValuation + ebitdaValuation) / 2;
+
+            displayResults({
+                method: 'Precedent Transactions',
+                revenueValuation: revenueValuation,
+                ebitdaValuation: ebitdaValuation,
+                averageValuation: averageValuation,
+                assumptions: `Based on ${revenueMultiple}x revenue and ${ebitdaMultiple}x EBITDA from recent M&A transactions`
+            });
+        }
+
+        // Display Results Function
+        function displayResults(data) {
+            let resultsHTML = '';
+            
+            if (data.method === 'DCF Analysis') {
+                resultsHTML = `
+                    <div class="result-card">
+                        <div class="result-label">Enterprise Value</div>
+                        <div class="result-value">$${data.enterpriseValue.toFixed(1)}M</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-label">Equity Value</div>
+                        <div class="result-value">$${data.equityValue.toFixed(1)}M</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-label">Price Per Share</div>
+                        <div class="result-value">$${data.pricePerShare.toFixed(2)}</div>
+                    </div>
+                `;
+            } else {
+                resultsHTML = `
+                    <div class="result-card">
+                        <div class="result-label">Revenue-Based Valuation</div>
+                        <div class="result-value">$${data.revenueValuation.toFixed(1)}M</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-label">EBITDA-Based Valuation</div>
+                        <div class="result-value">$${data.ebitdaValuation.toFixed(1)}M</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-label">Average Valuation</div>
+                        <div class="result-value">$${data.averageValuation.toFixed(1)}M</div>
+                    </div>
+                `;
+            }
+
+            document.getElementById('resultsContent').innerHTML = resultsHTML;
+            document.getElementById('assumptionsText').innerHTML = data.assumptions;
+            document.getElementById('resultsSection').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Auto-populate based on sector selection
+        document.getElementById('sector').addEventListener('change', function() {
+            const sector = this.value;
+            const defaults = {
+                'tech': { growth: 20, wacc: 12, multiple: 4.5, ebitdaMultiple: 15 },
+                'healthcare': { growth: 8, wacc: 9, multiple: 3.2, ebitdaMultiple: 12 },
+                'industrial': { growth: 5, wacc: 8, multiple: 1.8, ebitdaMultiple: 10 },
+                'tmt': { growth: 15, wacc: 11, multiple: 3.8, ebitdaMultiple: 14 },
+                'financial': { growth: 6, wacc: 10, multiple: 2.1, ebitdaMultiple: 11 }
+            };
+            
+            if (defaults[sector]) {
+                document.getElementById('growthRate').value = defaults[sector].growth;
+                document.getElementById('discountRate').value = defaults[sector].wacc;
+                document.getElementById('revenueMultiple').value = defaults[sector].multiple;
+                document.getElementById('ebitdaMultiple').value = defaults[sector].ebitdaMultiple;
+            }
+        });
+    </script>
+</body>
+</html>
