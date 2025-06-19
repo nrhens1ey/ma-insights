@@ -1,1 +1,1 @@
-# ma-blog
+# ma-insights
