@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare M&A | M&A Insights</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .sector-header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 80px 0;
+        }
+        .blog-post {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        .post-date {
+            color: #4facfe;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .post-title {
+            color: #2d3748;
+            margin: 10px 0;
+        }
+        .post-excerpt {
+            color: #666;
+            line-height: 1.6;
+        }
+        .read-more {
+            color: #4facfe;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .read-more:hover {
+            color: #00f2fe;
+        }
+        .sector-stats {
+            background: #f8f9fa;
+            padding: 40px 0;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4facfe;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .healthcare-badge {
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            color: white;
+            border: none;
+        }
+        .value-care-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .hot-sector {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">M&A Insights</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../scratch.html">Analysis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../app.html">Calculator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../resume.html">Resume</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sector Header -->
+    <section class="sector-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-3">Healthcare M&A</h1>
+                    <p class="lead mb-4">Value-based care transformation, behavioral health expansion, dental RCM consolidation, and healthcare technology driving unprecedented sector consolidation and innovation.</p>
+                    <div class="d-flex flex-wrap">
+                        <span class="badge healthcare-badge me-2 mb-2 px-3 py-2">Value-Based Care <span class="hot-sector ms-2">🔥 HOT</span></span>
+                        <span class="badge healthcare-badge me-2 mb-2 px-3 py-2">ABA Therapy <span class="hot-sector ms-2">🔥 HOT</span></span>
+                        <span class="badge healthcare-badge me-2 mb-2 px-3 py-2">Dental RCM <span class="hot-sector ms-2">🔥 HOT</span></span>
+                        <span class="badge healthcare-badge me-2 mb-2 px-3 py-2">HealthTech</span>
+                        <span class="badge healthcare-badge me-2 mb-2 px-3 py-2">Pharma</span>
+                        <span class="badge healthcare-badge me-2 mb-2 px-3 py-2">Medical Devices</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fas fa-heartbeat" style="font-size: 8rem; opacity: 0.3;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sector Statistics -->
+    <section class="sector-stats">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-number">$156B</div>
+                        <div class="stat-label">2024 Deal Volume</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-number">16.8x</div>
+                        <div class="stat-label">Avg EV/EBITDA</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-number">1,089</div>
+                        <div class="stat-label">Total Deals</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-number">+27%</div>
+                        <div class="stat-label">YoY Growth</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value-Based Care Highlight -->
+    <section class="py-5">
+        <div class="container">
+            <div class="value-care-highlight text-center">
+                <h3 class="mb-3">💊 Value-Based Care Revolution</h3>
+                <p class="lead mb-0">Healthcare payment models shifting from fee-for-service to outcomes-based reimbursement. $28B+ in value-based care acquisitions YTD as payers and providers align incentives for better patient outcomes and cost management.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekly Insights Blog -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-5">
+                    <h2 class="display-5 fw-bold text-center mb-4">Weekly Healthcare Insights</h2>
+                    <p class="text-center text-muted">Breaking analysis on value-based care, ABA therapy, dental RCM, and healthcare technology M&A</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Blog Post 1 -->
+                <div class="col-lg-6 col-md-12">
+                    <article class="blog-post p-4">
+                        <div class="post-date">June 19, 2025</div>
+                        <h3 class="post-title">$4.7B Value-Based Care Mega-Deal Transforms Primary Care Landscape</h3>
+                        <p class="post-excerpt">
+                            UnitedHealth Group's acquisition of value-based primary care platform CareFirst for $4.7 billion demonstrates payers' aggressive push into direct care delivery. The deal includes 847 primary care clinics and advanced risk-sharing contracts covering 2.3 million patients across 15 states.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="#" class="read-more">Read Full Analysis →</a>
+                            <span class="badge bg-primary">Value-Based Care 🔥</span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Blog Post 2 -->
+                <div class="col-lg-6 col-md-12">
+                    <article class="blog-post p-4">
+                        <div class="post-date">June 12, 2025</div>
+                        <h3 class="post-title">ABA Therapy Roll-Up Accelerates with $2.1B PE-Backed Consolidation</h3>
+                        <p class="post-excerpt">
+                            KKR-backed Behavioral Health Partners announces acquisition of three major ABA therapy providers for $2.1 billion, creating the largest autism spectrum disorder treatment network in the US. The deal consolidates 156 therapy centers serving 18,000+ children across 22 states.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="#" class="read-more">Read Full Analysis →</a>
+                            <span class="badge bg-success">ABA Therapy 🔥</span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Blog Post 3 -->
+                <div class="col-lg-6 col-md-12">
+                    <article class="blog-post p-4">
+                        <div class="post-date">June 5, 2025</div>
+                        <h3 class="post-title">Dental RCM Consolidation Heats Up with $1.8B Technology Platform Merger</h3>
+                        <p class="post-excerpt">
+                            Dental revenue cycle management leader DentalTech Solutions merges with cloud-based platform ClearClaims in a $1.8 billion all-stock deal. The combined entity processes $12B+ in annual dental claims and serves 47,000 dental practices nationwide with AI-powered billing optimization.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="#" class="read-more">Read Full Analysis →</a>
+                            <span class="badge bg-warning text-dark">Dental RCM 🔥</span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Blog Post 4 -->
+                <div class="col-lg-6 col-md-12">
+                    <article class="blog-post p-4">
+                        <div class="post-date">May 29, 2025</div>
+                        <h3 class="post-title">$3.2B Telehealth Platform Acquisition Signals Digital Health Maturation</h3>
+                        <p class="post-excerpt">
+                            Teladoc Health's acquisition of specialty telehealth platform MedConnect for $3.2 billion expands virtual care capabilities into mental health, dermatology, and chronic disease management. The deal integrates AI-powered triage with specialist networks serving 8.4 million patients.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="#" class="read-more">Read Full Analysis →</a>
+                            <span class="badge bg-info">HealthTech</span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Blog Post 5 -->
+                <div class="col-lg-6 col-md-12">
+                    <article class="blog-post p-4">
+                        <div class="post-date">May 22, 2025</div>
+                        <h3 class="post-title">Private Equity's $2.9B Bet on Specialized ABA Assessment Technology</h3>
+                        <p class="post-excerpt">
+                            Apollo Global Management acquires autism assessment and therapy planning platform NeuroAssess for $2.9 billion, highlighting PE's focus on high-growth healthcare technology. The platform uses AI to personalize ABA therapy plans and has demonstrated 34% better patient outcomes.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="#" class="read-more">Read Full Analysis →</a>
+                            <span class="badge bg-danger">ABA Therapy 🔥</span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Blog Post 6 -->
+                <div class="col-lg-6 col-md-12">
+                    <article class="blog-post p-4">
+                        <div class="post-date">May 15, 2025</div>
+                        <h3 class="post-title">Dental DSO Mega-Merger: $5.4B Deal Creates 3,200-Location Network</h3>
+                        <p class="post-excerpt">
+                            Heartland Dental's merger with Pacific Dental Services for $5.4 billion creates the largest dental service organization in North America. The combined entity operates 3,200+ locations and leverages advanced dental RCM technology to optimize revenue across the integrated network.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="#" class="read-more">Read Full Analysis →</a>
+                            <span class="badge bg-secondary">Dental RCM 🔥</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-5">
+                <button class="btn btn-outline-primary btn-lg">Load More Healthcare Insights</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Trends Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">Healthcare Transformation Trends</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-chart-line text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h4>Value-Based Care Shift <span class="hot-sector">🔥</span></h4>
+                        <p>Healthcare payment models transitioning from volume to value, driving consolidation among providers capable of managing population health and financial risk.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-brain text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h4>ABA Therapy Expansion <span class="hot-sector">🔥</span></h4>
+                        <p>Rising autism diagnoses and insurance coverage mandates fueling rapid consolidation of Applied Behavior Analysis providers and technology platforms.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-tooth text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h4>Dental RCM Innovation <span class="hot-sector">🔥</span></h4>
+                        <p>Dental service organizations acquiring revenue cycle management technology to optimize billing, reduce claim denials, and improve cash flow across practice networks.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-mobile-alt text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h4>Digital Health Maturation</h4>
+                        <p>Telehealth platforms evolving beyond basic virtual visits to comprehensive digital health ecosystems with AI-powered diagnostics and care coordination.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-pills text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h4>Pharma Technology Integration</h4>
+                        <p>Pharmaceutical companies acquiring digital therapeutics, patient engagement platforms, and real-world evidence technology to enhance drug development and commercialization.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-user-md text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h4>Specialty Care Consolidation</h4>
+                        <p>Private equity driving roll-up strategies in high-margin specialty practices including dermatology, ophthalmology, gastroenterology, and behavioral health.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Healthcare M&A Analysis</h5>
+                    <p>Expert coverage of value-based care, behavioral health, dental RCM, and healthcare technology transformation driving sector consolidation.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="../index.html" class="btn btn-outline-light">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
