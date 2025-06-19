@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMT M&A | M&A Insights</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .sector-header {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 80px 0;
+        }
+        .blog-post {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        .post-date {
+            color: #ff6b35;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .post-title {
+            color: #2d3748;
+            margin: 10px 0;
+        }
+        .post-excerpt {
+            color: #666;
+            line-height: 1.6;
+        }
+        .read-more {
+            color: #ff6b35;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .read-more:hover {
+            color: #f7931e;
+        }
+        .sector-stats {
+            background: #f8f9fa;
+            padding: 40px 0;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff6b35;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .tmt-badge {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            border: none;
+        }
+        .streaming-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">M&A Insights</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../scratch.html">Analysis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../app.html">Calculator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../resume.html">Resume</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sector Header -->
+    <section class="sector-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-3">TMT M&A</h1>
+                    <p class="lead mb-4">Technology, Media & Telecom convergence driving mega-mergers, streaming wars, 5G infrastructure deals, content acquisitions, and digital transformation across the ecosystem.</p>
+                    <div class="d-flex flex-wrap">
+                        <span class="badge tmt-badge me-2 mb-2 px-3 py-2">Streaming Wars</span>
+                        <span class="badge tmt-badge me-2 mb-2 px-3 py-2">5G Infrastructure</span>
+                        <span class="badge tmt-badge me-2 mb-2 px-3 py-2">Content Creation</span>
+                        <span class="badge tmt-badge me-2 mb-2 px-3 py-2">AdTech</span>
+                        <span class="badge tmt-badge me-2 mb-2 px-3 py-2">Gaming</span>
+                        <span class="badge tmt-badge me-2 mb-2 px-3 py-2">Social Media</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fas fa-broadcast-tower" style="font-size: 8rem; opacity: 0.3;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sector Statistics -->
+    <section class="sector-stats">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-number">$267B</div>
+                        <div class="stat-label">2024 Deal Volume</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-number">22.4x</div>
+                        <div class="stat-label">Avg EV/Revenue</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-number">892</div>
+                        <div class="stat-label">Total Deals</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-number">+18%</div>
+                        <div class="stat-label">YoY Growth</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Streaming Wars Highlight -->
+    <section class="py-5">
+        <div class="container">
+            <div class="streaming-highlight text-center">
+                <h3 class="mb-3">🎬 Streaming Wars Heat Up</h3>
+                <p class="lead mb-0">Content consolidation reaches fever pitch as platforms battle for subscriber dominance. $45B+ in content acquisitions YTD as streaming giants secure exclusive programming and production capabilities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekly Insights Blog -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-5">
+                    <h2 class="display-5 fw-bold text-center mb-4">Weekly TMT Insights</h2>
+                    <p class="text-center text-muted">Breaking analysis on media consolidation, telecom infrastructure, and digital transformation deals</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Blog Post 1 -->
+                <div class="col-lg-6 col-md-12">
+                    <article class="blog-post p-4">
+                        <div class="post-date">June 19, 2025</div>
+                        <h3 class="post-title">Netflix's $12.8B Content Studio Mega-Acquisition Reshapes Streaming</h3>
+                        <p class="post-excerpt">
+                            Netflix's blockbuster acquisition of independent film studio MegaContent for $12.8 billion signals the streaming giant's aggressive push for exclusive content ownership. The deal includes 47 active film franchises and a 15-year exclusive distribution agreement, potentially shifting the competitive landscape.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="#" class="read-more">Read Full Analysis →</a>
+                            <span class="badge bg-primary">Streaming Wars</span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Blog Post 2 -->
+                <div class="col-lg-6 col-md-12">
+                    <article class="blog-post p-4">
+                        <div class="post-date">June 12, 2025</div>
+                        <h3 class="post-title">Verizon's $8.9B 5G Infrastructure Play Accelerates Network Transformation</h3>
+                        <p class="post-excerpt">
+                            Verizon announces acquisition of fiber infrastructure specialist FiberCore for $8.9 billion, significantly expanding its 5G backhaul capabilities. The transaction positions Verizon to compete more aggressively in enterprise 5G solutions and edge computing services.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="#" class="read-more">Read Full Analysis →</a>
+                            <span class="badge bg-success">5G Infrastructure</span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Blog Post 3 -->
+                <div class="col-lg-6 col-md-12">
+                    <article class="blog-post p-4">
+                        <div class="post-date">June 5, 2025</div>
+                        <h3 class="post-title">Google's $6.4B Gaming Studio Spree Targets Metaverse Dominance</h3>
+                        <p class="post-excerpt">
+                            Google's acquisition of three major gaming studios for a combined $6.4 billion demonstrates its commitment to metaverse and cloud gaming leadership. The deals include VR pioneer ImmersiveWorlds ($2.8B), mobile gaming giant CasualPlay ($2.1B), and indie developer collective PixelForge ($1.5B).
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="#" class="read-more">Read Full Analysis →</a>
+                            <span class="badge bg-warning text-dark">Gaming</span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Blog Post 4 -->
+                <div class="col-lg-6 col-md-12">
+                    <article class="blog-post p-4">
+                        <div class="post-date">May 29, 2025</div>
+                        <h3 class="post-title">Amazon's $4.2B AdTech Consolidation Play Challenges Google Duopoly</h3>
+                        <p class="post-excerpt">
+                            Amazon Web Services acquires programmatic advertising platform AdFlow for $4.2 billion, strengthening its position against Google and Meta in digital advertising. The deal integrates advanced targeting capabilities with AWS's cloud infrastructure for enhanced ad personalization.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="#" class="read-more">Read Full Analysis →</a>
+                            <span class="badge bg-danger">AdTech</span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Blog Post 5 -->
+                <div class="col-lg-6 col-md-12">
+                    <article class="blog-post p-4">
+                        <div class="post-date">May 22, 2025</div>
+                        <h3 class="post-title">Disney's $3.7B Sports Media Acquisition Expands ESPN+ Arsenal</h3>
+                        <p class="post-excerpt">
+                            The Walt Disney Company's acquisition of sports media network Athletic Network for $3.7 billion bolsters ESPN+'s content offerings and subscriber retention strategy. The deal includes exclusive rights to 23 professional sports leagues and advanced sports analytics capabilities.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="#" class="read-more">Read Full Analysis →</a>
+                            <span class="badge bg-info">Content Creation</span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Blog Post 6 -->
+                <div class="col-lg-6 col-md-12">
+                    <article class="blog-post p-4">
+                        <div class="post-date">May 15, 2025</div>
+                        <h3 class="post-title">TikTok Parent's $5.1B Social Commerce Push Disrupts E-commerce</h3>
+                        <p class="post-excerpt">
+                            ByteDance's acquisition of social commerce platform ShopSocial for $5.1 billion integrates advanced e-commerce capabilities directly into TikTok's ecosystem. The deal positions ByteDance to challenge Amazon and Meta in social commerce, leveraging viral content for product discovery.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="#" class="read-more">Read Full Analysis →</a>
+                            <span class="badge bg-secondary">Social Media</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-5">
+                <button class="btn btn-outline-primary btn-lg">Load More TMT Insights</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Trends Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">TMT Convergence Trends</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-video text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h4>Content Wars Intensify</h4>
+                        <p>Streaming platforms acquiring exclusive content libraries, production studios, and IP rights to differentiate offerings and reduce churn rates.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-signal text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h4>5G Infrastructure Boom</h4>
+                        <p>Telecom operators investing heavily in fiber backhaul, edge computing, and network infrastructure to support next-generation applications.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-gamepad text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h4>Gaming Metaverse Push</h4>
+                        <p>Tech giants acquiring gaming studios and VR/AR companies to build comprehensive metaverse ecosystems and virtual world experiences.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-bullhorn text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h4>AdTech Consolidation</h4>
+                        <p>Privacy regulations and cookie deprecation driving consolidation among advertising technology providers and data management platforms.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-share-alt text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h4>Social Commerce Rise</h4>
+                        <p>Social media platforms integrating e-commerce functionality through strategic acquisitions of shopping and payment technology companies.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-satellite text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h4>Satellite Internet Race</h4>
+                        <p>Low Earth Orbit satellite constellation development driving strategic partnerships and acquisitions in space technology and ground infrastructure.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>TMT M&A Analysis</h5>
+                    <p>Comprehensive coverage of Technology, Media & Telecom convergence driving the digital transformation economy.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="../index.html" class="btn btn-outline-light">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
