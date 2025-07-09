@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMT M&A Intelligence | M&A Insights</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --warning-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .sector-header {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sector-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .dashboard-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .enhanced-deal-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .enhanced-deal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        .enhanced-deal-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        .deal-header {
+            padding: 25px 25px 15px 25px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .deal-content {
+            padding: 20px 25px;
+        }
+
+        .deal-footer {
+            padding: 15px 25px 25px 25px;
+            background: #f8f9fa;
+        }
+
+        .post-date {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .post-title {
+            color: #2d3748;
+            margin: 15px 0 10px 0;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .post-excerpt {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .deal-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+
+        .metric-item {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .advisors-section {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f0f4ff;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .advisor-tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 2px;
+            font-weight: 500;
+        }
+
+        .read-more {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .read-more:hover {
+            color: #764ba2;
+            transform: translateX(5px);
+        }
+
+        .sector-stats {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 80px 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 40px 25px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        .stat-number {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .stat-change {
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 15px;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .tmt-badge {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .market-dashboard {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .market-dashboard::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        .dashboard-metric {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .dashboard-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .dashboard-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        .trend-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            height: 100%;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .trend-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        .trend-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            background: var(--primary-gradient);
+        }
+
+        .deal-tag {
+            display: inline-block;
+            padding: 6px 15px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .deal-tag.mega { background: #ff6b6b; color: white; }
+        .deal-tag.ai { background: #4ecdc4; color: white; }
+        .deal-tag.telecom { background: #45b7d1; color: white; }
+        .deal-tag.media { background: #96ceb4; color: white; }
+        .deal-tag.strategic { background: #feca57; color: white; }
+        .deal-tag.pe { background: #ff9ff3; color: white; }
+
+        .filter-buttons {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid #667eea;
+            color: #667eea;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin: 5px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .search-box {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 1.1rem;
+            padding: 10px;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary-gradient);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            text-align: right;
+            margin-right: 50%;
+            padding-right: 40px;
+        }
+
+        .timeline-item:nth-child(even) {
+            text-align: left;
+            margin-left: 50%;
+            padding-left: 40px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 20px;
+            width: 16px;
+            height: 16px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #667eea;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -8px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -8px;
+        }
+
+        .export-buttons {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .export-btn {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            margin: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">M&A Insights</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../scratch.html">Analysis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../app.html">Calculator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../resume.html">Resume</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sector Header -->
+    <section class="sector-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-3 fw-bold mb-4">TMT M&A Intelligence Center</h1>
+                    <p class="lead mb-4">Technology, Media & Telecom at an inflection point: AI infrastructure supercycle, supply chain reconfiguration, and consolidation dynamics driving record deal values despite volume headwinds in H1 2025.</p>
+                    <div class="d-flex flex-wrap">
+                        <span class="badge tmt-badge me-2 mb-2">AI Supercycle</span>
+                        <span class="badge tmt-badge me-2 mb-2">Supply Chain Resilience</span>
+                        <span class="badge tmt-badge me-2 mb-2">NetCo Model</span>
+                        <span class="badge tmt-badge me-2 mb-2">Chiplet Architecture</span>
+                        <span class="badge tmt-badge me-2 mb-2">Agentic AI</span>
+                        <span class="badge tmt-badge me-2 mb-2">Edge Computing</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fas fa-chart-line" style="font-size: 10rem; opacity: 0.3;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Dashboard -->
+    <section class="market-dashboard">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="display-5 fw-bold mb-3">Live Market Dashboard</h2>
+                    <p class="lead">Real-time TMT sector performance indicators</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="dashboard-metric">
+                        <span class="dashboard-number" id="liveDeals">247</span>
+                        <div class="dashboard-label">Active Deals</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="dashboard-metric">
+                        <span class="dashboard-number" id="pipelineValue">$89.4B</span>
+                        <div class="dashboard-label">Pipeline Value</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="dashboard-metric">
+                        <span class="dashboard-number" id="aiDeals">34%</span>
+                        <div class="dashboard-label">AI-Related Deals</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="dashboard-metric">
+                        <span class="dashboard-number" id="avgMultiple">12.8x</span>
+                        <div class="dashboard-label">Avg EV/Revenue</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sector Statistics -->
+    <section class="sector-stats">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="display-5 fw-bold">H1 2025 Performance Metrics</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <span class="stat-number">$134.3B</span>
+                        <div class="stat-label">H1 2025 Deal Value</div>
+                        <span class="stat-change bg-success text-white">+20% YoY</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <span class="stat-number">78%</span>
+                        <div class="stat-label">Technology Share</div>
+                        <span class="stat-change bg-info text-white">of total volume</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <span class="stat-number">$377M</span>
+                        <div class="stat-label">Avg Tech Deal Size</div>
+                        <span class="stat-change bg-warning text-dark">vs $626M Media</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <span class="stat-number">$100B+</span>
+                        <div class="stat-label">Tariff Exposure</div>
+                        <span class="stat-change bg-danger text-white">Supply chain risk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Charts Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">Market Analytics</h2>
+                    <p class="text-muted">Interactive data visualization and trend analysis</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="chart-container">
+                        <h4 class="mb-3">Deal Volume by Quarter</h4>
+                        <canvas id="dealVolumeChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="chart-container">
+                        <h4 class="mb-3">Sector Distribution</h4>
+                        <canvas id="sectorChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="chart-container">
+                        <h4 class="mb-3">Deal Value Trends (2023-2025)</h4>
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deal Database with Search and Filters -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">Deal Intelligence Database</h2>
+                    <p class="text-muted">Comprehensive transaction analysis with advanced filtering</p>
+                </div>
+            </div>
+
+            <!-- Search and Filter Controls -->
+            <div class="row mb-4">
+                <div class="col-lg-6">
+                    <div class="search-box">
+                        <i class="fas fa-search text-muted me-3"></i>
+                        <input type="text" class="search-input" placeholder="Search deals by company, sector, or advisor..." id="dealSearch">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Deals</button>
+                        <button class="filter-btn" data-filter="mega">Mega Deals</button>
+                        <button class="filter-btn" data-filter="ai">AI/Tech</button>
+                        <button class="filter-btn" data-filter="telecom">Telecom</button>
+                        <button class="filter-btn" data-filter="media">Media</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Deal Cards -->
+            <div class="row" id="dealContainer">
+                <!-- Charter-Cox Mega Deal -->
+                <div class="col-lg-6 col-md-12 deal-item" data-category="mega telecom" data-keywords="charter cox communications merger telecom infrastructure 5g">
+                    <article class="enhanced-deal-card">
+                        <div class="deal-header">
+                            <div class="deal-tag mega">MEGA DEAL</div>
+                            <div class="post-date">March 2025</div>
+                            <h3 class="post-title">Charter-Cox Communications Merger: $34.5B Telecom Consolidation</h3>
+                        </div>
+                        <div class="deal-content">
+                            <p class="post-excerpt">
+                                The Charter Communications and Cox Communications merger, valuing Cox at $34.5 billion, represents the largest telecom infrastructure consolidation of H1 2025. Deal creates enhanced scale for 5G deployment and fiber network monetization strategies.
+                            </p>
+                            <div class="deal-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">$34.5B</span>
+                                    <div class="metric-label">Enterprise Value</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">8.2x</span>
+                                    <div class="metric-label">EV/EBITDA</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">15.2M</span>
+                                    <div class="metric-label">Combined Subs</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">$2.1B</span>
+                                    <div class="metric-label">Synergies</div>
+                                </div>
+                            </div>
+                            <div class="advisors-section">
+                                <strong>Key Advisors:</strong>
+                                <div class="mt-2">
+                                    <span class="advisor-tag">Goldman Sachs (Charter)</span>
+                                    <span class="advisor-tag">Morgan Stanley (Cox)</span>
+                                    <span class="advisor-tag">Wachtell Lipton</span>
+                                    <span class="advisor-tag">Simpson Thacher</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="deal-footer">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="read-more">
+                                    Strategic Analysis <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <span class="badge bg-primary">Telecom Infrastructure</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- AT&T Fiber Acquisition -->
+                <div class="col-lg-6 col-md-12 deal-item" data-category="strategic telecom" data-keywords="att lumen fiber infrastructure netco">
+                    <article class="enhanced-deal-card">
+                        <div class="deal-header">
+                            <div class="deal-tag strategic">STRATEGIC</div>
+                            <div class="post-date">February 2025</div>
+                            <h3 class="post-title">AT&T's $5.75B Lumen Fiber Acquisition Accelerates NetCo Strategy</h3>
+                        </div>
+                        <div class="deal-content">
+                            <p class="post-excerpt">
+                                AT&T's acquisition of Lumen's Mass Markets fiber internet connectivity business for $5.75 billion signals the shift toward asset-light NetCo models. Transaction enhances AT&T's fiber footprint while Lumen focuses on enterprise edge computing.
+                            </p>
+                            <div class="deal-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">$5.75B</span>
+                                    <div class="metric-label">Transaction Value</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">2.8M</span>
+                                    <div class="metric-label">Fiber Customers</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">12x</span>
+                                    <div class="metric-label">EV/EBITDA</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">$450M</span>
+                                    <div class="metric-label">Cost Synergies</div>
+                                </div>
+                            </div>
+                            <div class="advisors-section">
+                                <strong>Key Advisors:</strong>
+                                <div class="mt-2">
+                                    <span class="advisor-tag">JPMorgan (AT&T)</span>
+                                    <span class="advisor-tag">Lazard (Lumen)</span>
+                                    <span class="advisor-tag">Kirkland & Ellis</span>
+                                    <span class="advisor-tag">Skadden Arps</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="deal-footer">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="read-more">
+                                    Deal Deep Dive <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <span class="badge bg-success">Fiber Infrastructure</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- NVIDIA AI Infrastructure -->
+                <div class="col-lg-6 col-md-12 deal-item" data-category="ai strategic" data-keywords="nvidia ai infrastructure tsmc supply chain">
+                    <article class="enhanced-deal-card">
+                        <div class="deal-header">
+                            <div class="deal-tag ai">AI INFRASTRUCTURE</div>
+                            <div class="post-date">January 2025</div>
+                            <h3 class="post-title">NVIDIA's $500B US AI Infrastructure Commitment Reshapes Supply Chains</h3>
+                        </div>
+                        <div class="deal-content">
+                            <p class="post-excerpt">
+                                NVIDIA's announcement to produce up to half a trillion dollars of AI infrastructure in the US through TSMC partnerships represents the largest supply chain reconfiguration in semiconductor history. EU responds with €200B Invest AI initiative.
+                            </p>
+                            <div class="deal-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">$500B</span>
+                                    <div class="metric-label">Investment Size</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">4 Years</span>
+                                    <div class="metric-label">Timeline</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">50%</span>
+                                    <div class="metric-label">US Production</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">€200B</span>
+                                    <div class="metric-label">EU Response</div>
+                                </div>
+                            </div>
+                            <div class="advisors-section">
+                                <strong>Key Partners:</strong>
+                                <div class="mt-2">
+                                    <span class="advisor-tag">TSMC</span>
+                                    <span class="advisor-tag">US Government</span>
+                                    <span class="advisor-tag">Intel Foundry</span>
+                                    <span class="advisor-tag">Samsung</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="deal-footer">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="read-more">
+                                    Geopolitical Impact <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <span class="badge bg-warning text-dark">Supply Chain</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Goldman Sachs TMT Leadership -->
+                <div class="col-lg-6 col-md-12 deal-item" data-category="strategic" data-keywords="goldman sachs nick giovanni tmt partner instacart">
+                    <article class="enhanced-deal-card">
+                        <div class="deal-header">
+                            <div class="deal-tag strategic">LEADERSHIP</div>
+                            <div class="post-date">February 2025</div>
+                            <h3 class="post-title">Nick Giovanni Rejoins Goldman Sachs TMT as Partner</h3>
+                        </div>
+                        <div class="deal-content">
+                            <p class="post-excerpt">
+                                Former Instacart CFO Nick Giovanni returns to Goldman Sachs as Partner in TMT Investment Banking, bringing Silicon Valley operating experience. Appointment signals Goldman's continued commitment to TMT sector leadership and tech executive advisory capabilities.
+                            </p>
+                            <div class="deal-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">20+</span>
+                                    <div class="metric-label">Years at GS</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">CFO</span>
+                                    <div class="metric-label">Instacart Role</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">100s</span>
+                                    <div class="metric-label">Deals Advised</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">SF</span>
+                                    <div class="metric-label">Office Location</div>
+                                </div>
+                            </div>
+                            <div class="advisors-section">
+                                <strong>Previous Roles:</strong>
+                                <div class="mt-2">
+                                    <span class="advisor-tag">Head of TMT Group</span>
+                                    <span class="advisor-tag">Co-Head Tech IB</span>
+                                    <span class="advisor-tag">Head Internet Investment</span>
+                                    <span class="advisor-tag">Instacart CFO</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="deal-footer">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="read-more">
+                                    Market Implications <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <span class="badge bg-danger">Investment Banking</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Apple Supply Chain -->
+                <div class="col-lg-6 col-md-12 deal-item" data-category="strategic ai" data-keywords="apple supply chain tariff india vietnam manufacturing">
+                    <article class="enhanced-deal-card">
+                        <div class="deal-header">
+                            <div class="deal-tag strategic">SUPPLY CHAIN</div>
+                            <div class="post-date">March 2025</div>
+                            <h3 class="post-title">Apple's $500B+ US Investment Amid Tariff Uncertainties</h3>
+                        </div>
+                        <div class="deal-content">
+                            <p class="post-excerpt">
+                                Apple commits over $500 billion to US investment while diversifying supply chains through India and Vietnam sourcing. Strategy reflects broader TMT sector response to potential tariff spikes exceeding $100B industry-wide exposure.
+                            </p>
+                            <div class="deal-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">$500B+</span>
+                                    <div class="metric-label">US Investment</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">25%</span>
+                                    <div class="metric-label">India Production</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">15%</span>
+                                    <div class="metric-label">Vietnam Share</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">$100B</span>
+                                    <div class="metric-label">Sector Exposure</div>
+                                </div>
+                            </div>
+                            <div class="advisors-section">
+                                <strong>Manufacturing Partners:</strong>
+                                <div class="mt-2">
+                                    <span class="advisor-tag">Foxconn</span>
+                                    <span class="advisor-tag">Pegatron</span>
+                                    <span class="advisor-tag">Wistron</span>
+                                    <span class="advisor-tag">Tata Group</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="deal-footer">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="read-more">
+                                    Supply Chain Analysis <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <span class="badge bg-info">Manufacturing</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- PE Activity -->
+                <div class="col-lg-6 col-md-12 deal-item" data-category="pe" data-keywords="private equity tmt deals volume value ai software">
+                    <article class="enhanced-deal-card">
+                        <div class="deal-header">
+                            <div class="deal-tag pe">PRIVATE EQUITY</div>
+                            <div class="post-date">January 2025</div>
+                            <h3 class="post-title">TMT PE Deal Values Surge 118% Despite Volume Decline</h3>
+                        </div>
+                        <div class="deal-content">
+                            <p class="post-excerpt">
+                                Private equity TMT deal values increased 118% on 8% fewer transactions in Q1 2025, highlighting flight to quality. PE firms focus on AI-enabled software platforms, cybersecurity assets, and telecom infrastructure with predictable cash flows.
+                            </p>
+                            <div class="deal-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">+118%</span>
+                                    <div class="metric-label">Value Increase</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">-8%</span>
+                                    <div class="metric-label">Volume Change</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">$2.5T</span>
+                                    <div class="metric-label">Dry Powder</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">6-7yr</span>
+                                    <div class="metric-label">Avg Hold Period</div>
+                                </div>
+                            </div>
+                            <div class="advisors-section">
+                                <strong>Active PE Firms:</strong>
+                                <div class="mt-2">
+                                    <span class="advisor-tag">KKR</span>
+                                    <span class="advisor-tag">Blackstone</span>
+                                    <span class="advisor-tag">Apollo</span>
+                                    <span class="advisor-tag">Silver Lake</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="deal-footer">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="read-more">
+                                    PE Strategy Shift <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <span class="badge bg-secondary">Private Equity</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div class="loading-spinner" id="loadingSpinner">
+                <div class="spinner"></div>
+                <p>Loading more deals...</p>
+            </div>
+
+            <!-- Export Buttons -->
+            <div class="export-buttons">
+                <button class="export-btn" onclick="exportToPDF()">
+                    <i class="fas fa-file-pdf me-2"></i>Export to PDF
+                </button>
+                <button class="export-btn" onclick="exportToExcel()">
+                    <i class="fas fa-file-excel me-2"></i>Export to Excel
+                </button>
+                <button class="export-btn" onclick="loadMoreDeals()">
+                    <i class="fas fa-plus me-2"></i>Load More Deals
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deal Timeline -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">TMT Deal Timeline</h2>
+                    <p class="text-muted">Major transactions in chronological order</p>
+                </div>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Charter-Cox Merger</h5>
+                            <p class="card-text">$34.5B telecom consolidation creating largest cable operator</p>
+                            <small class="text-muted">March 2025</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">AT&T-Lumen Deal</h5>
+                            <p class="card-text">$5.75B fiber infrastructure acquisition accelerating NetCo strategy</p>
+                            <small class="text-muted">February 2025</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">NVIDIA US Investment</h5>
+                            <p class="card-text">$500B AI infrastructure commitment reshaping supply chains</p>
+                            <small class="text-muted">January 2025</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Goldman TMT Leadership</h5>
+                            <p class="card-text">Nick Giovanni returns as Partner strengthening tech coverage</p>
+                            <small class="text-muted">February 2025</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Themes -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">2025 TMT Investment Themes</h2>
+                    <p class="text-muted">Based on Morgan Stanley, Goldman Sachs, and Deloitte research</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="trend-card text-center">
+                        <div class="trend-icon mx-auto">
+                            <i class="fas fa-brain text-white" style="font-size: 1.8rem;"></i>
+                        </div>
+                        <h4>Agentic AI Evolution</h4>
+                        <p>Autonomous gen AI agents increasing knowledge worker productivity. Enterprise software vendors delivering AI into all sectors, driving acquisition premiums for AI-enabled platforms.</p>
+                        <small class="text-muted">Key Players: Microsoft, Google, Anthropic</small>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="trend-card text-center">
+                        <div class="trend-icon mx-auto">
+                            <i class="fas fa-network-wired text-white" style="font-size: 1.8rem;"></i>
+                        </div>
+                        <h4>NetCo Infrastructure Model</h4>
+                        <p>Asset-light telecom operators leasing infrastructure from specialized providers. Tower companies and fiber networks commanding 20-25x EBITDAaL multiples.</p>
+                        <small class="text-muted">Key Players: Cellnex, American Tower, Crown Castle</small>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="trend-card text-center">
+                        <div class="trend-icon mx-auto">
+                            <i class="fas fa-microchip text-white" style="font-size: 1.8rem;"></i>
+                        </div>
+                        <h4>Chiplet Architecture</h4>
+                        <p>Modular semiconductor design improving yields and reducing costs. Silicon photonics enabling next-generation AI data center infrastructure with premium valuations.</p>
+                        <small class="text-muted">Key Players: TSMC, NVIDIA, AMD</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4 mb-4">
+                    <div class="trend-card text-center">
+                        <div class="trend-icon mx-auto">
+                            <i class="fas fa-shield-alt text-white" style="font-size: 1.8rem;"></i>
+                        </div>
+                        <h4>Cybersecurity Consolidation</h4>
+                        <p>Cybersecurity startups raised $9.9B globally in H1 2025, 96% above 2024 levels. Enterprise breach costs averaging $4.88M driving demand for integrated security platforms.</p>
+                        <small class="text-muted">Key Players: CrowdStrike, Palo Alto, SentinelOne</small>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="trend-card text-center">
+                        <div class="trend-icon mx-auto">
+                            <i class="fas fa-satellite text-white" style="font-size: 1.8rem;"></i>
+                        </div>
+                        <h4>Edge Computing Deployment</h4>
+                        <p>5G and edge computing infrastructure driving enterprise private network demand. Hyperscaler capex exceeding $1B daily for AI-enabled data center capabilities.</p>
+                        <small class="text-muted">Key Players: AWS, Microsoft Azure, Google Cloud</small>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="trend-card text-center">
+                        <div class="trend-icon mx-auto">
+                            <i class="fas fa-globe-americas text-white" style="font-size: 1.8rem;"></i>
+                        </div>
+                        <h4>Supply Chain Resilience</h4>
+                        <p>Nearshoring and reshoring initiatives reducing Asian dependency. TMT companies investing in manufacturing diversification to mitigate tariff exposure exceeding $100B.</p>
+                        <small class="text-muted">Key Regions: US, Mexico, India, Vietnam</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valuation Framework -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">TMT Valuation Framework</h2>
+                    <p class="text-muted">Investment banking perspectives on sector-specific metrics</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="dashboard-card p-4">
+                        <h4><i class="fas fa-laptop-code text-primary me-2"></i>Software & SaaS</h4>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><strong>Revenue Multiples:</strong> 8-15x for AI-integrated platforms</li>
+                            <li class="mb-2"><strong>Key Metrics:</strong> ARR growth, NRR (120%+ premium)</li>
+                            <li class="mb-2"><strong>Premium Factors:</strong> Proprietary datasets, vertical leadership</li>
+                            <li class="mb-2"><strong>Growth Rate:</strong> 25-40% ARR growth commanding premium</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="dashboard-card p-4">
+                        <h4><i class="fas fa-broadcast-tower text-primary me-2"></i>Telecom Infrastructure</h4>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><strong>Tower Companies:</strong> 20-25x EBITDAaL</li>
+                            <li class="mb-2"><strong>Fiber Networks:</strong> 8-12x EBITDA</li>
+                            <li class="mb-2"><strong>Data Centers:</strong> 15-20x EBITDA (hyperscale premium)</li>
+                            <li class="mb-2"><strong>5G Assets:</strong> 30-50% premium for 5G-ready infrastructure</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="dashboard-card p-4">
+                        <h4><i class="fas fa-microchip text-primary me-2"></i>Semiconductors</h4>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><strong>EV/Sales:</strong> 3-6x (supply chain resilience premium)</li>
+                            <li class="mb-2"><strong>Critical Factors:</strong> Foundry partnerships, advanced nodes</li>
+                            <li class="mb-2"><strong>Risk Discount:</strong> 10-20% for China exposure</li>
+                            <li class="mb-2"><strong>AI Chips:</strong> 50-100% premium for AI-focused designs</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="dashboard-card p-4">
+                        <h4><i class="fas fa-video text-primary me-2"></i>Media & Streaming</h4>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><strong>EV/Subscriber:</strong> $200-500 (ARPU dependent)</li>
+                            <li class="mb-2"><strong>Content Assets:</strong> 3-5yr amortization periods</li>
+                            <li class="mb-2"><strong>Sports Rights:</strong> Premium valuations for live content</li>
+                            <li class="mb-2"><strong>Ad-Supported:</strong> 20-30% discount to subscription models</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5>TMT Investment Banking Intelligence Center</h5>
+                    <p class="mb-3">Comprehensive analysis powered by insights from Goldman Sachs, Morgan Stanley, JPMorgan, Deloitte, PwC, and McKinsey research.</p>
+                    <small class="text-muted">
+                        <strong>Data Sources:</strong> PwC TMT M&A 2025 Mid-Year Outlook, Deloitte TMT Predictions 2025, Morgan Stanley TMT Conference insights, 
+                        Goldman Sachs Technology Outlook, McKinsey TMT Analysis, KPMG Deal Advisory Reports
+                    </small>
+                    <div class="mt-3">
+                        <small class="text-muted">
+                            <strong>Disclaimer:</strong> This content is for educational and informational purposes only. 
+                            Deal metrics and analysis are based on publicly available information and industry research.
+                        </small>
+                    </div>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="mb-3">
+                        <small class="text-muted">Last Updated: March 2025</small><br>
+                        <small class="text-muted">Next Update: April 15, 2025</small>
+                    </div>
+                    <a href="../index.html" class="btn btn-outline-light me-2">Back to Home</a>
+                    <button class="btn btn-primary" onclick="window.print()">Print Analysis</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Interactive Charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Deal Volume Chart
+            const dealVolumeCtx = document.getElementById('dealVolumeChart').getContext('2d');
+            new Chart(dealVolumeCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Q1 2023', 'Q2 2023', 'Q3 2023', 'Q4 2023', 'Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2024', 'Q1 2025'],
+                    datasets: [{
+                        label: 'Deal Count',
+                        data: [156, 189, 167, 203, 178, 195, 234, 198, 176],
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0,0,0,0.1)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(0,0,0,0.1)'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Sector Distribution Chart
+            const sectorCtx = document.getElementById('sectorChart').getContext('2d');
+            new Chart(sectorCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Technology', 'Media', 'Telecommunications'],
+                    datasets: [{
+                        data: [78, 15, 7],
+                        backgroundColor: ['#667eea', '#764ba2', '#f093fb'],
+                        borderWidth: 3,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                usePointStyle: true
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Trend Chart
+            const trendCtx = document.getElementById('trendChart').getContext('2d');
+            new Chart(trendCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['2023 Q1', '2023 Q2', '2023 Q3', '2023 Q4', '2024 Q1', '2024 Q2', '2024 Q3', '2024 Q4', '2025 Q1'],
+                    datasets: [{
+                        label: 'Deal Value ($B)',
+                        data: [89, 76, 92, 108, 95, 87, 134, 156, 134],
+                        backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                        borderColor: '#667eea',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0,0,0,0.1)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(0,0,0,0.1)'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Live Dashboard Animation
+            animateDashboard();
+        });
+
+        // Dashboard Animation
+        function animateDashboard() {
+            const liveDeals = document.getElementById('liveDeals');
+            const pipelineValue = document.getElementById('pipelineValue');
+            const aiDeals = document.getElementById('aiDeals');
+            const avgMultiple = document.getElementById('avgMultiple');
+
+            setInterval(() => {
+                // Simulate real-time updates
+                const dealCount = 247 + Math.floor(Math.random() * 10) - 5;
+                const pipelineVal = (89.4 + (Math.random() * 2 - 1)).toFixed(1);
+                const aiPercent = (34 + (Math.random() * 2 - 1)).toFixed(0);
+                const multiple = (12.8 + (Math.random() * 0.4 - 0.2)).toFixed(1);
+
+                liveDeals.textContent = dealCount;
+                pipelineValue.textContent = `${pipelineVal}B`;
+                aiDeals.textContent = `${aiPercent}%`;
+                avgMultiple.textContent = `${multiple}x`;
+            }, 5000);
+        }
+
+        // Search and Filter Functionality
+        const searchInput = document.getElementById('dealSearch');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const dealItems = document.querySelectorAll('.deal-item');
+
+        searchInput.addEventListener('input', filterDeals);
+        filterButtons.forEach(btn => btn.addEventListener('click', setFilter));
+
+        function setFilter(e) {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            e.target.classList.add('active');
+            filterDeals();
+        }
+
+        function filterDeals() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+
+            dealItems.forEach(item => {
+                const keywords = item.dataset.keywords.toLowerCase();
+                const category = item.dataset.category;
+                
+                const matchesSearch = keywords.includes(searchTerm);
+                const matchesFilter = activeFilter === 'all' || category.includes(activeFilter);
+                
+                if (matchesSearch && matchesFilter) {
+                    item.style.display = 'block';
+                    item.style.animation = 'fadeIn 0.5s ease';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Export Functions
+        function exportToPDF() {
+            alert('PDF export functionality would integrate with jsPDF library');
+        }
+
+        function exportToExcel() {
+            alert('Excel export functionality would integrate with SheetJS library');
+        }
+
+        function loadMoreDeals() {
+            const spinner = document.getElementById('loadingSpinner');
+            spinner.style.display = 'block';
+            
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                alert('Additional deals loaded! In production, this would fetch more data from the API.');
+            }, 2000);
+        }
+
+        // Add CSS animation for fade in
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.querySelectorAll('.dashboard-card, .enhanced-deal-card, .trend-card, .stat-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Deal comparison functionality
+        let selectedDeals = [];
+
+        function toggleDealSelection(dealElement) {
+            const dealId = dealElement.dataset.dealId;
+            if (selectedDeals.includes(dealId)) {
+                selectedDeals = selectedDeals.filter(id => id !== dealId);
+                dealElement.classList.remove('selected');
+            } else if (selectedDeals.length < 3) {
+                selectedDeals.push(dealId);
+                dealElement.classList.add('selected');
+            }
+            updateCompareButton();
+        }
+
+        function updateCompareButton() {
+            const compareBtn = document.getElementById('compareBtn');
+            if (compareBtn) {
+                compareBtn.style.display = selectedDeals.length >= 2 ? 'block' : 'none';
+                compareBtn.textContent = `Compare ${selectedDeals.length} Deals`;
+            }
+        }
+
+        // Advanced search with suggestions
+        function initAdvancedSearch() {
+            const searchSuggestions = [
+                'Goldman Sachs', 'Morgan Stanley', 'JPMorgan', 'AI infrastructure',
+                'Fiber network', 'Private equity', 'Telecom consolidation',
+                'Supply chain', 'NVIDIA', 'Charter Communications', 'AT&T'
+            ];
+
+            const searchContainer = document.querySelector('.search-box');
+            const suggestionsList = document.createElement('div');
+            suggestionsList.className = 'search-suggestions';
+            suggestionsList.style.cssText = `
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                border-radius: 0 0 15px 15px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                max-height: 200px;
+                overflow-y: auto;
+                z-index: 1000;
+                display: none;
+            `;
+
+            searchContainer.style.position = 'relative';
+            searchContainer.appendChild(suggestionsList);
+
+            searchInput.addEventListener('input', function() {
+                const value = this.value.toLowerCase();
+                if (value.length < 2) {
+                    suggestionsList.style.display = 'none';
+                    return;
+                }
+
+                const matches = searchSuggestions.filter(suggestion => 
+                    suggestion.toLowerCase().includes(value)
+                );
+
+                if (matches.length > 0) {
+                    suggestionsList.innerHTML = matches.map(match => 
+                        `<div class="suggestion-item" style="padding: 10px; cursor: pointer; border-bottom: 1px solid #eee;">${match}</div>`
+                    ).join('');
+                    suggestionsList.style.display = 'block';
+
+                    // Add click handlers to suggestions
+                    suggestionsList.querySelectorAll('.suggestion-item').forEach(item => {
+                        item.addEventListener('click', function() {
+                            searchInput.value = this.textContent;
+                            suggestionsList.style.display = 'none';
+                            filterDeals();
+                        });
+                    });
+                } else {
+                    suggestionsList.style.display = 'none';
+                }
+            });
+
+            // Hide suggestions when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!searchContainer.contains(e.target)) {
+                    suggestionsList.style.display = 'none';
+                }
+            });
+        }
+
+        // Initialize advanced search
+        initAdvancedSearch();
+
+        // Deal metrics calculator
+        function calculateDealMetrics(dealValue, ebitda, revenue) {
+            return {
+                evEbitda: (dealValue / ebitda).toFixed(1),
+                evRevenue: (dealValue / revenue).toFixed(1),
+                ebitdaMargin: ((ebitda / revenue) * 100).toFixed(1)
+            };
+        }
+
+        // Market sentiment indicator
+        function updateMarketSentiment() {
+            const sentimentIndicator = document.createElement('div');
+            sentimentIndicator.className = 'market-sentiment';
+            sentimentIndicator.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                color: white;
+                padding: 15px 20px;
+                border-radius: 25px;
+                font-weight: 600;
+                z-index: 1000;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                transition: all 0.3s ease;
+            `;
+
+            const sentiments = ['🔥 Hot Market', '📈 Bullish Outlook', '⚡ High Activity', '🎯 Prime Deals'];
+            const randomSentiment = sentiments[Math.floor(Math.random() * sentiments.length)];
+            sentimentIndicator.textContent = randomSentiment;
+
+            document.body.appendChild(sentimentIndicator);
+
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                sentimentIndicator.style.opacity = '0';
+                setTimeout(() => sentimentIndicator.remove(), 300);
+            }, 5000);
+        }
+
+        // Show sentiment indicator on page load
+        setTimeout(updateMarketSentiment, 2000);
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + K for search focus
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                searchInput.focus();
+            }
+            
+            // Escape to clear search
+            if (e.key === 'Escape') {
+                searchInput.value = '';
+                filterDeals();
+                searchInput.blur();
+            }
+        });
+
+        // Add keyboard shortcut indicator
+        const searchBox = document.querySelector('.search-box');
+        const shortcutHint = document.createElement('div');
+        shortcutHint.style.cssText = `
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #f0f0f0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #666;
+        `;
+        shortcutHint.textContent = 'Ctrl+K';
+        searchBox.appendChild(shortcutHint);
+
+        // Performance monitoring
+        function trackPagePerformance() {
+            if ('performance' in window) {
+                window.addEventListener('load', function() {
+                    setTimeout(function() {
+                        const perfData = performance.getEntriesByType('navigation')[0];
+                        console.log('Page Load Time:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
+                    }, 0);
+                });
+            }
+        }
+
+        trackPagePerformance();
+
+        // Error boundary for charts
+        function handleChartError(error) {
+            console.error('Chart rendering error:', error);
+            const fallbackMessage = document.createElement('div');
+            fallbackMessage.innerHTML = `
+                <div style="text-align: center; padding: 40px; color: #666;">
+                    <i class="fas fa-chart-line" style="font-size: 3rem; margin-bottom: 15px; opacity: 0.5;"></i>
+                    <p>Chart temporarily unavailable</p>
+                    <small>Data visualization will be restored shortly</small>
+                </div>
+            `;
+            return fallbackMessage;
+        }
+
+        // Responsive table for mobile
+        function makeTablesResponsive() {
+            const tables = document.querySelectorAll('table');
+            tables.forEach(table => {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'table-responsive';
+                wrapper.style.overflowX = 'auto';
+                table.parentNode.insertBefore(wrapper, table);
+                wrapper.appendChild(table);
+            });
+        }
+
+        makeTablesResponsive();
+    </script>
+</body>
+</html>
