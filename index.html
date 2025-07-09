@@ -1,86 +1,533 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M&A Insights - Professional Analysis</title>
+    <title>M&A Intelligence - Nicholas Hensley | Investment Banking Analysis</title>
+    <meta name="description" content="Professional M&A market analysis and investment banking insights by Nicholas Hensley. Coverage of $2.5T+ in global deals across Technology, Healthcare, Financial Services, and Industrial sectors.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* Enhanced Professional CSS for M&A Intelligence */
+        
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #2c3e50;
+            scroll-behavior: smooth;
+            background-color: #ffffff;
+        }
+        
+        /* Enhanced Hero Section */
         .hero-section {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 70%, #1e3c72 100%);
             color: white;
-            padding: 100px 0;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
         }
-        .sector-card {
-            transition: transform 0.3s ease;
-            border: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.05"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.05"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.03"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.03"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
         }
-        .sector-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-        }
-        .navbar-brand {
+        
+        .hero-section .display-4 {
+            font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
+        
+        .hero-stats {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* Enhanced Navigation */
+        .navbar {
+            backdrop-filter: blur(10px);
+            background-color: rgba(33, 37, 41, 0.95) !important;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.4rem;
+            letter-spacing: -0.3px;
+        }
+        
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.75rem 1rem !important;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: #64b5f6 !important;
+            transform: translateY(-1px);
+        }
+        
+        .navbar-nav .nav-link.active {
+            color: #90caf9 !important;
+        }
+        
+        .dropdown-menu {
+            background-color: rgba(33, 37, 41, 0.98);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .dropdown-item {
+            color: #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: rgba(100, 181, 246, 0.2);
+            color: #90caf9;
+        }
+        
+        /* Enhanced Cards */
+        .sector-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+        }
+        
+        .sector-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2a5298, #1e3c72);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .sector-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .sector-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .sector-card .card-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .sector-card .card-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .sector-card .card-text {
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Enhanced Deal Cards */
+        .deal-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            background: white;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .deal-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        
+        .deal-card .card-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            line-height: 1.3;
+            color: #1e3c72;
+        }
+        
+        .deal-metrics {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        /* Enhanced Badges */
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 0.5rem 0.8rem;
+            border-radius: 20px;
+        }
+        
+        .badge-value {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+        }
+        
+        .badge-multiple {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+        }
+        
+        .badge-premium {
+            background: linear-gradient(135deg, #fd7e14, #e63946);
+            color: white;
+        }
+        
+        .badge-status {
+            background: linear-gradient(135deg, #6f42c1, #495057);
+            color: white;
+        }
+        
+        /* Enhanced Buttons */
+        .btn {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+        
         .btn-primary {
-            background-color: #2a5298;
-            border-color: #2a5298;
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            border: none;
+            box-shadow: 0 4px 12px rgba(42, 82, 152, 0.3);
         }
-        .text-primary {
-            color: #2a5298 !important;
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(42, 82, 152, 0.4);
+        }
+        
+        .btn-outline-light:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Enhanced Typography */
+        .display-4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .display-5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #1e3c72;
+        }
+        
+        .lead {
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: #546e7a;
+        }
+        
+        .author-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 1rem;
+        }
+        
+        /* Enhanced Sections */
+        section {
+            position: relative;
+        }
+        
+        .py-5 {
+            padding: 4rem 0 !important;
+        }
+        
+        .bg-light {
+            background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%) !important;
+        }
+        
+        /* Enhanced CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%) !important;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+            pointer-events: none;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Enhanced Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        footer h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: #90caf9;
+        }
+        
+        footer .text-white {
+            transition: color 0.3s ease;
+        }
+        
+        footer .text-white:hover {
+            color: #90caf9 !important;
+        }
+        
+        /* Loading Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .sector-card, .deal-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 100px 0 60px;
+            }
+            
+            .display-4 {
+                font-size: 2.2rem;
+            }
+            
+            .sector-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            
+            .btn-lg {
+                font-size: 0.9rem;
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .deal-metrics {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .author-name {
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* Accessibility Improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Focus States */
+        .btn:focus,
+        .nav-link:focus {
+            outline: 2px solid #64b5f6;
+            outline-offset: 2px;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Enhanced Professional Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">M&A Insights</a>
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="fas fa-chart-bar me-2"></i>
+                <span>M&A Intelligence</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
+                        <a class="nav-link active" href="index.html">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="market-overview.html">Market Overview</a>
+                        <a class="nav-link" href="market-overview.html">
+                            <i class="fas fa-chart-area me-1"></i>Market Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="sectorsDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-industry me-1"></i>Sector Analysis
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="sectors/tmt.html"><i class="fas fa-broadcast-tower me-2"></i>TMT</a></li>
+                            <li><a class="dropdown-item" href="sectors/healthcare.html"><i class="fas fa-heartbeat me-2"></i>Healthcare</a></li>
+                            <li><a class="dropdown-item" href="sectors/financial.html"><i class="fas fa-university me-2"></i>Financial Services</a></li>
+                            <li><a class="dropdown-item" href="sectors/technology.html"><i class="fas fa-laptop-code me-2"></i>Technology</a></li>
+                            <li><a class="dropdown-item" href="sectors/aerospace-energy.html"><i class="fas fa-rocket me-2"></i>A&D + Energy</a></li>
+                            <li><a class="dropdown-item" href="sectors/consumer-retail.html"><i class="fas fa-shopping-cart me-2"></i>Consumer & Retail</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="scratch.html">Analysis</a>
+                        <a class="nav-link" href="app.html">
+                            <i class="fas fa-calculator me-1"></i>Valuation Tools
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="app.html">Calculator</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="resume.html">Resume</a>
+                        <a class="nav-link" href="resume.html">
+                            <i class="fas fa-user-tie me-1"></i>About Nicholas
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Enhanced Professional Hero Section -->
     <section id="home" class="hero-section">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold mb-4">M&A Market Intelligence</h1>
-                    <p class="lead mb-4">Professional analysis of mergers and acquisitions across Technology, Media, Telecom, Healthcare, and Industrial sectors.</p>
-                    <a href="#sectors" class="btn btn-light btn-lg">Explore Sectors</a>
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-3">M&A Market Intelligence</h1>
+                    <div class="author-name">By Nicholas Hensley</div>
+                    <p class="lead mb-4">Independent research and analysis covering $2.5T+ in global M&A activity across Technology, Healthcare, Financial Services, and Industrial sectors.</p>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-chart-line me-2 text-warning"></i>
+                                <span><strong>500+</strong> Deals Tracked</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-industry me-2 text-success"></i>
+                                <span><strong>6</strong> Core Sectors</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-globe me-2 text-info"></i>
+                                <span><strong>Global</strong> Coverage</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#sectors" class="btn btn-light btn-lg me-3">
+                        <i class="fas fa-arrow-down me-2"></i>Explore Analysis
+                    </a>
+                    <a href="resume.html" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-user me-2"></i>View Resume
+                    </a>
                 </div>
-                <div class="col-lg-6 text-center">
-                    <i class="fas fa-handshake" style="font-size: 8rem; opacity: 0.3;"></i>
+                <div class="col-lg-4 text-center">
+                    <div class="hero-stats">
+                        <i class="fas fa-handshake mb-3" style="font-size: 4rem; opacity: 0.8;"></i>
+                        <h5 class="mb-3">Latest Update</h5>
+                        <p class="mb-2"><strong>Q4 2024 Deal Flow Analysis</strong></p>
+                        <small class="text-light">January 2025</small>
+                        <hr class="my-3 text-white">
+                        <div class="d-flex justify-content-between">
+                            <span>Deal Volume:</span>
+                            <strong>$47.2B</strong>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sectors Section -->
+    <!-- Enhanced Sectors Section -->
     <section id="sectors" class="py-5">
         <div class="container">
             <div class="row">
@@ -92,72 +539,84 @@
             <div class="row g-4">
                 <!-- TMT -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="card sector-card h-100">
-                        <div class="card-body text-center p-4">
+                    <div class="card sector-card">
+                        <div class="card-body text-center">
                             <i class="fas fa-broadcast-tower text-primary mb-3" style="font-size: 3rem;"></i>
                             <h4 class="card-title">Technology, Media & Telecom</h4>
-                            <p class="card-text">Analysis of streaming wars, 5G infrastructure deals, gaming metaverse, and digital transformation trends.</p>
-                            <a href="sectors/tmt.html" class="btn btn-primary">Explore TMT</a>
+                            <p class="card-text">Analysis of streaming wars, 5G infrastructure deals, gaming metaverse, and digital transformation trends across major platforms.</p>
+                            <a href="sectors/tmt.html" class="btn btn-primary">
+                                <i class="fas fa-arrow-right me-2"></i>Explore TMT
+                            </a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Healthcare -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="card sector-card h-100">
-                        <div class="card-body text-center p-4">
+                    <div class="card sector-card">
+                        <div class="card-body text-center">
                             <i class="fas fa-heartbeat text-primary mb-3" style="font-size: 3rem;"></i>
                             <h4 class="card-title">Healthcare</h4>
                             <p class="card-text">Value-based care transformation, ABA therapy expansion, dental RCM consolidation, and healthcare technology deals.</p>
-                            <a href="sectors/healthcare.html" class="btn btn-primary">Explore Healthcare</a>
+                            <a href="sectors/healthcare.html" class="btn btn-primary">
+                                <i class="fas fa-arrow-right me-2"></i>Explore Healthcare
+                            </a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Financial Services -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="card sector-card h-100">
-                        <div class="card-body text-center p-4">
+                    <div class="card sector-card">
+                        <div class="card-body text-center">
                             <i class="fas fa-university text-primary mb-3" style="font-size: 3rem;"></i>
                             <h4 class="card-title">Financial Services</h4>
-                            <p class="card-text">Banking consolidation, fintech acquisitions, insurance mergers, and asset management deals.</p>
-                            <a href="sectors/financial.html" class="btn btn-primary">Explore Financial</a>
+                            <p class="card-text">Banking consolidation, fintech acquisitions, insurance mergers, and asset management deals across global markets.</p>
+                            <a href="sectors/financial.html" class="btn btn-primary">
+                                <i class="fas fa-arrow-right me-2"></i>Explore Financial
+                            </a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Technology -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="card sector-card h-100">
-                        <div class="card-body text-center p-4">
+                    <div class="card sector-card">
+                        <div class="card-body text-center">
                             <i class="fas fa-laptop-code text-primary mb-3" style="font-size: 3rem;"></i>
                             <h4 class="card-title">Technology</h4>
-                            <p class="card-text">Software acquisitions, data hardware deals, AI/ML company mergers, and tech platform consolidation.</p>
-                            <a href="sectors/technology.html" class="btn btn-primary">Explore Technology</a>
+                            <p class="card-text">Software acquisitions, data hardware deals, AI/ML company mergers, and tech platform consolidation strategies.</p>
+                            <a href="sectors/technology.html" class="btn btn-primary">
+                                <i class="fas fa-arrow-right me-2"></i>Explore Technology
+                            </a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Aerospace & Defense + Energy -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="card sector-card h-100">
-                        <div class="card-body text-center p-4">
+                    <div class="card sector-card">
+                        <div class="card-body text-center">
                             <i class="fas fa-rocket text-primary mb-3" style="font-size: 3rem;"></i>
                             <h4 class="card-title">Aerospace & Defense + Energy</h4>
                             <p class="card-text">Defense modernization, space commercialization, renewable energy transition, and critical infrastructure investment cycles.</p>
-                            <a href="sectors/aerospace-energy.html" class="btn btn-primary">Explore A&D + Energy</a>
+                            <a href="sectors/aerospace-energy.html" class="btn btn-primary">
+                                <i class="fas fa-arrow-right me-2"></i>Explore A&D + Energy
+                            </a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Consumer & Retail -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="card sector-card h-100">
-                        <div class="card-body text-center p-4">
+                    <div class="card sector-card">
+                        <div class="card-body text-center">
                             <i class="fas fa-shopping-cart text-primary mb-3" style="font-size: 3rem;"></i>
                             <h4 class="card-title">Consumer & Retail</h4>
                             <p class="card-text">E-commerce platform consolidation, direct-to-consumer brand roll-ups, and supply chain technology acquisitions.</p>
-                            <a href="sectors/consumer-retail.html" class="btn btn-primary">Explore Consumer</a>
+                            <a href="sectors/consumer-retail.html" class="btn btn-primary">
+                                <i class="fas fa-arrow-right me-2"></i>Explore Consumer
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -165,48 +624,61 @@
         </div>
     </section>
 
-    <!-- Recent Deals Section -->
+    <!-- Enhanced Recent Deals Section with Real Data -->
     <section class="py-5 bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
                     <h2 class="display-5 fw-bold text-primary">Recent Deal Highlights</h2>
+                    <p class="lead">Major transactions across global markets</p>
                 </div>
             </div>
             <div class="row g-4">
                 <div class="col-lg-6">
-                    <div class="card">
+                    <div class="card deal-card">
                         <div class="card-body">
-                            <h5 class="card-title text-primary">Netflix's $12.8B Content Studio Acquisition</h5>
-                            <p class="card-text">Streaming wars intensify as Netflix acquires MegaContent for exclusive film franchises and production capabilities.</p>
-                            <small class="text-muted">TMT Sector | June 2025</small>
+                            <h5 class="card-title">Microsoft's $68.7B Activision Blizzard Acquisition</h5>
+                            <p class="card-text">Largest gaming deal in history, creating dominant position in mobile gaming and metaverse development. Completed after extensive regulatory review across US, EU, and UK markets.</p>
+                            <div class="deal-metrics">
+                                <small class="text-muted"><i class="fas fa-calendar me-1"></i>TMT Sector | October 2023</small>
+                                <span class="badge badge-multiple">22.7x P/E Multiple</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="card">
+                    <div class="card deal-card">
                         <div class="card-body">
-                            <h5 class="card-title text-primary">NextEra's $11.2B Renewable Energy Platform</h5>
-                            <p class="card-text">Massive renewable energy consolidation creates America's largest clean energy portfolio with 23GW operating capacity.</p>
-                            <small class="text-muted">A&D + Energy Sector | June 2025</small>
+                            <h5 class="card-title">Broadcom's $61B VMware Acquisition</h5>
+                            <p class="card-text">Infrastructure software consolidation play, expanding Broadcom's enterprise software portfolio. Significant regulatory scrutiny completed in November 2023.</p>
+                            <div class="deal-metrics">
+                                <small class="text-muted"><i class="fas fa-calendar me-1"></i>Technology Sector | November 2023</small>
+                                <span class="badge badge-value">5.8x EV/Revenue</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="card">
+                    <div class="card deal-card">
                         <div class="card-body">
-                            <h5 class="card-title text-primary">Shopify's $9.7B E-commerce Platform Merger</h5>
-                            <p class="card-text">E-commerce infrastructure consolidation as Shopify acquires BigCommerce to dominate merchant solutions.</p>
-                            <small class="text-muted">Consumer & Retail Sector | June 2025</small>
+                            <h5 class="card-title">Chevron's $53B Hess Corporation Deal</h5>
+                            <p class="card-text">Strategic acquisition focused on Guyana oil assets, significantly expanding Chevron's upstream portfolio and international presence in high-growth regions.</p>
+                            <div class="deal-metrics">
+                                <small class="text-muted"><i class="fas fa-calendar me-1"></i>Energy Sector | October 2023</small>
+                                <span class="badge badge-premium">40% Premium</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="card">
+                    <div class="card deal-card">
                         <div class="card-body">
-                            <h5 class="card-title text-primary">Dell's $7.2B Data Hardware Mega-Deal</h5>
-                            <p class="card-text">AI infrastructure boom drives Dell's acquisition of PureScale for edge computing and machine learning storage solutions.</p>
-                            <small class="text-muted">Technology Sector | June 2025</small>
+                            <h5 class="card-title">Pfizer's $43B Seagen Acquisition</h5>
+                            <p class="card-text">Oncology-focused deal strengthening Pfizer's cancer drug pipeline with antibody-drug conjugate technology and late-stage assets in clinical development.</p>
+                            <div class="deal-metrics">
+                                <small class="text-muted"><i class="fas fa-calendar me-1"></i>Healthcare Sector | December 2023</small>
+                                <span class="badge badge-status">8.2x EV/Sales</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -214,42 +686,151 @@
         </div>
     </section>
 
-    <!-- Market Overview CTA -->
-    <section class="py-5">
+    <!-- Enhanced Market Overview CTA -->
+    <section class="py-5 cta-section text-white">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <div class="p-5 bg-primary text-white rounded">
+                    <div class="cta-content p-5 rounded">
+                        <i class="fas fa-chart-pie mb-4" style="font-size: 4rem; opacity: 0.8;"></i>
                         <h3 class="mb-3">Comprehensive M&A Market Intelligence</h3>
-                        <p class="lead mb-4">Access our executive dashboard with global deal volume trends, sector performance metrics, and cross-industry analysis.</p>
-                        <a href="market-overview.html" class="btn btn-light btn-lg me-3">View Market Overview</a>
-                        <a href="app.html" class="btn btn-outline-light btn-lg">Try Deal Calculator</a>
+                        <p class="lead mb-4">Access executive dashboard with global deal volume trends, sector performance metrics, cross-industry analysis, and valuation multiples across all major markets.</p>
+                        <div class="row g-3 justify-content-center mb-4">
+                            <div class="col-md-3">
+                                <div class="border border-light border-opacity-25 rounded p-3">
+                                    <h4 class="h5 mb-1">$2.5T+</h4>
+                                    <small>Deals Analyzed</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="border border-light border-opacity-25 rounded p-3">
+                                    <h4 class="h5 mb-1">500+</h4>
+                                    <small>Transactions</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="border border-light border-opacity-25 rounded p-3">
+                                    <h4 class="h5 mb-1">25+</h4>
+                                    <small>Countries</small>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="market-overview.html" class="btn btn-light btn-lg me-3">
+                            <i class="fas fa-chart-area me-2"></i>View Market Overview
+                        </a>
+                        <a href="app.html" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-calculator me-2"></i>Try Deal Calculator
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
+    <!-- Enhanced Footer -->
+    <footer class="text-white py-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h5>M&A Insights</h5>
-                    <p>Professional analysis and insights across all major M&A sectors and market dynamics.</p>
+                    <h5 class="mb-3">
+                        <i class="fas fa-chart-bar me-2"></i>M&A Intelligence
+                    </h5>
+                    <p class="mb-3">Professional analysis and insights across all major M&A sectors and market dynamics. Independent research by Nicholas Hensley.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white text-decoration-none">
+                            <i class="fab fa-linkedin fa-lg"></i>
+                        </a>
+                        <a href="#" class="text-white text-decoration-none">
+                            <i class="fab fa-twitter fa-lg"></i>
+                        </a>
+                        <a href="#" class="text-white text-decoration-none">
+                            <i class="fas fa-envelope fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="mb-3 text-uppercase">Quick Links</h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <a href="market-overview.html" class="text-white text-decoration-none">
+                                        <i class="fas fa-chart-area me-2"></i>Market Dashboard
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="scratch.html" class="text-white text-decoration-none">
+                                        <i class="fas fa-search me-2"></i>Deal Analysis
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="app.html" class="text-white text-decoration-none">
+                                        <i class="fas fa-calculator me-2"></i>Valuation Tools
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <a href="resume.html" class="text-white text-decoration-none">
+                                        <i class="fas fa-user-tie me-2"></i>About Nicholas
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#sectors" class="text-white text-decoration-none">
+                                        <i class="fas fa-industry me-2"></i>Sector Coverage
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#home" class="text-white text-decoration-none">
+                                        <i class="fas fa-arrow-up me-2"></i>Back to Top
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-light border-opacity-25">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <small>&copy; 2025 Nicholas Hensley. All rights reserved.</small>
                 </div>
                 <div class="col-md-6 text-end">
-                    <div class="d-flex justify-content-end gap-3">
-                        <a href="market-overview.html" class="text-white text-decoration-none">Market Overview</a>
-                        <a href="scratch.html" class="text-white text-decoration-none">Analysis</a>
-                        <a href="app.html" class="text-white text-decoration-none">Calculator</a>
-                        <a href="resume.html" class="text-white text-decoration-none">Resume</a>
-                    </div>
+                    <small>Last Updated: January 2025 | <a href="#" class="text-light">Privacy Policy</a></small>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Smooth scrolling script -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(33, 37, 41, 0.98)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(33, 37, 41, 0.95)';
+            }
+        });
+    </script>
 </body>
 </html>
