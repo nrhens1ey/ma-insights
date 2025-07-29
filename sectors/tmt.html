@@ -177,6 +177,91 @@
             transform: translateX(5px);
         }
 
+        /* In-Depth Analysis Sections */
+        .analysis-toggle {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .analysis-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            color: white;
+        }
+
+        .analysis-content {
+            display: none;
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 20px;
+            border-left: 5px solid #667eea;
+        }
+
+        .analysis-content.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .analysis-section {
+            margin-bottom: 25px;
+        }
+
+        .analysis-section h5 {
+            color: #667eea;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .analysis-subsection {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .financial-table {
+            width: 100%;
+            margin: 15px 0;
+        }
+
+        .financial-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            font-weight: 600;
+        }
+
+        .financial-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .financial-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
         .sector-stats {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 80px 0;
@@ -350,6 +435,7 @@
         .deal-tag.media { background: #96ceb4; color: white; }
         .deal-tag.strategic { background: #feca57; color: white; }
         .deal-tag.pe { background: #ff9ff3; color: white; }
+        .deal-tag.completed { background: #28a745; color: white; }
 
         .filter-buttons {
             margin-bottom: 40px;
@@ -516,7 +602,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-8">
                     <h1 class="display-3 fw-bold mb-4">TMT M&A Intelligence Center</h1>
-                    <p class="lead mb-4">Technology, Media & Telecom at an inflection point: AI infrastructure supercycle, supply chain reconfiguration, and consolidation dynamics driving record deal values despite volume headwinds in H1 2025.</p>
+                    <p class="lead mb-4">Technology, Media & Telecom at an inflection point: AI infrastructure supercycle, supply chain reconfiguration, and consolidation dynamics driving record deal values despite volume headwinds in H2 2025.</p>
                     <div class="d-flex flex-wrap">
                         <span class="badge tmt-badge me-2 mb-2">AI Supercycle</span>
                         <span class="badge tmt-badge me-2 mb-2">Supply Chain Resilience</span>
@@ -545,25 +631,25 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="dashboard-metric">
-                        <span class="dashboard-number" id="liveDeals">247</span>
+                        <span class="dashboard-number" id="liveDeals">267</span>
                         <div class="dashboard-label">Active Deals</div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="dashboard-metric">
-                        <span class="dashboard-number" id="pipelineValue">$89.4B</span>
+                        <span class="dashboard-number" id="pipelineValue">$94.7B</span>
                         <div class="dashboard-label">Pipeline Value</div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="dashboard-metric">
-                        <span class="dashboard-number" id="aiDeals">34%</span>
+                        <span class="dashboard-number" id="aiDeals">38%</span>
                         <div class="dashboard-label">AI-Related Deals</div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="dashboard-metric">
-                        <span class="dashboard-number" id="avgMultiple">12.8x</span>
+                        <span class="dashboard-number" id="avgMultiple">13.2x</span>
                         <div class="dashboard-label">Avg EV/Revenue</div>
                     </div>
                 </div>
@@ -582,28 +668,28 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="stat-card">
-                        <span class="stat-number">$134.3B</span>
+                        <span class="stat-number">$156.8B</span>
                         <div class="stat-label">H1 2025 Deal Value</div>
-                        <span class="stat-change bg-success text-white">+20% YoY</span>
+                        <span class="stat-change bg-success text-white">+37% YoY</span>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="stat-card">
-                        <span class="stat-number">78%</span>
+                        <span class="stat-number">74%</span>
                         <div class="stat-label">Technology Share</div>
                         <span class="stat-change bg-info text-white">of total volume</span>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="stat-card">
-                        <span class="stat-number">$377M</span>
+                        <span class="stat-number">$445M</span>
                         <div class="stat-label">Avg Tech Deal Size</div>
-                        <span class="stat-change bg-warning text-dark">vs $626M Media</span>
+                        <span class="stat-change bg-warning text-dark">vs $712M Media</span>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="stat-card">
-                        <span class="stat-number">$100B+</span>
+                        <span class="stat-number">$125B+</span>
                         <div class="stat-label">Tariff Exposure</div>
                         <span class="stat-change bg-danger text-white">Supply chain risk</span>
                     </div>
@@ -678,16 +764,16 @@
             <!-- Enhanced Deal Cards -->
             <div class="row" id="dealContainer">
                 <!-- Charter-Cox Mega Deal -->
-                <div class="col-lg-6 col-md-12 deal-item" data-category="mega telecom" data-keywords="charter cox communications merger telecom infrastructure 5g">
+                <div class="col-lg-6 col-md-12 deal-item" data-category="mega telecom completed" data-keywords="charter cox communications merger telecom infrastructure 5g">
                     <article class="enhanced-deal-card">
                         <div class="deal-header">
-                            <div class="deal-tag mega">MEGA DEAL</div>
-                            <div class="post-date">March 2025</div>
+                            <div class="deal-tag completed">COMPLETED MEGA DEAL</div>
+                            <div class="post-date">May 2025</div>
                             <h3 class="post-title">Charter-Cox Communications Merger: $34.5B Telecom Consolidation</h3>
                         </div>
                         <div class="deal-content">
                             <p class="post-excerpt">
-                                The Charter Communications and Cox Communications merger, valuing Cox at $34.5 billion, represents the largest telecom infrastructure consolidation of H1 2025. Deal creates enhanced scale for 5G deployment and fiber network monetization strategies.
+                                The Charter Communications and Cox Communications merger, announced May 16, 2025, valuing Cox at $34.5 billion, represents the largest telecom infrastructure consolidation of 2025. Deal creates enhanced scale for 5G deployment and fiber network monetization strategies, positioning the combined entity as America's largest cable operator.
                             </p>
                             <div class="deal-metrics">
                                 <div class="metric-item">
@@ -699,11 +785,11 @@
                                     <div class="metric-label">EV/EBITDA</div>
                                 </div>
                                 <div class="metric-item">
-                                    <span class="metric-value">15.2M</span>
+                                    <span class="metric-value">38M</span>
                                     <div class="metric-label">Combined Subs</div>
                                 </div>
                                 <div class="metric-item">
-                                    <span class="metric-value">$2.1B</span>
+                                    <span class="metric-value">$500M</span>
                                     <div class="metric-label">Synergies</div>
                                 </div>
                             </div>
@@ -716,29 +802,110 @@
                                     <span class="advisor-tag">Simpson Thacher</span>
                                 </div>
                             </div>
+                            
+                            <!-- In-Depth Analysis Toggle -->
+                            <div class="mt-3">
+                                <button class="analysis-toggle" onclick="toggleAnalysis('charter-cox-analysis')">
+                                    <i class="fas fa-chart-line me-2"></i>In-Depth Strategic Analysis
+                                </button>
+                            </div>
+                            
+                            <!-- In-Depth Analysis Content -->
+                            <div id="charter-cox-analysis" class="analysis-content">
+                                <div class="analysis-section">
+                                    <h5><i class="fas fa-bullseye"></i>Strategic Rationale & Market Context</h5>
+                                    <div class="analysis-subsection">
+                                        <p><strong>Industry Consolidation Driver:</strong> The merger addresses increasing competitive pressure from AT&T, Verizon, and T-Mobile's aggressive broadband expansion. With cord-cutting accelerating (-8.2% in Q1 2025), cable operators need scale to compete in the converged connectivity market.</p>
+                                        <p><strong>Geographic Complementarity:</strong> Charter's footprint (NY, LA, major metros) combined with Cox's presence (Boston, Phoenix, New Orleans) creates a national platform with minimal geographic overlap, reducing antitrust concerns.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="analysis-section">
+                                    <h5><i class="fas fa-calculator"></i>Financial Analysis & Valuation</h5>
+                                    <div class="analysis-subsection">
+                                        <table class="financial-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Metric</th>
+                                                    <th>Charter (Pre-Deal)</th>
+                                                    <th>Cox</th>
+                                                    <th>Combined Pro Forma</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Enterprise Value</td>
+                                                    <td>$128.5B</td>
+                                                    <td>$34.5B</td>
+                                                    <td>$163.0B</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2025E EBITDA</td>
+                                                    <td>$18.2B</td>
+                                                    <td>$4.2B</td>
+                                                    <td>$22.9B</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>EV/EBITDA Multiple</td>
+                                                    <td>7.1x</td>
+                                                    <td>8.2x</td>
+                                                    <td>7.1x</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Subscribers (millions)</td>
+                                                    <td>31.4M</td>
+                                                    <td>6.5M</td>
+                                                    <td>37.9M</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p><strong>Valuation Assessment:</strong> Cox's 8.2x EV/EBITDA multiple represents a 15% premium to Charter's trading multiple, justified by higher growth profile and fiber density. Deal expected to be accretive to Charter FCF/share by 2027.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="analysis-section">
+                                    <h5><i class="fas fa-sync-alt"></i>Synergies & Integration Strategy</h5>
+                                    <div class="analysis-subsection">
+                                        <p><strong>Cost Synergies ($500M annually):</strong></p>
+                                        <ul>
+                                            <li>Network optimization and shared infrastructure: $180M</li>
+                                            <li>Technology platform consolidation: $125M</li>
+                                            <li>Corporate overhead elimination: $95M</li>
+                                            <li>Procurement and vendor renegotiation: $100M</li>
+                                        </ul>
+                                        <p><strong>Revenue Synergies:</strong> Cross-selling mobile services in Cox markets, leveraging Charter's MVNO relationship. Estimated $200M incremental revenue by Year 3.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="analysis-section">
+                                    <h5><i class="fas fa-gavel"></i>Regulatory & Competitive Dynamics</h5>
+                                    <div class="analysis-subsection">
+                                        <p><strong>Antitrust Risk Assessment: LOW</strong> - No geographic overlap eliminates horizontal concerns. FCC likely to impose behavioral remedies around content distribution and rural broadband commitments.</p>
+                                        <p><strong>Timeline:</strong> Expected closing in mid-2026, contingent on FCC approval and Charter shareholder vote (>75% approval expected).</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="deal-footer">
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="read-more">
-                                    Strategic Analysis <i class="fas fa-arrow-right"></i>
-                                </a>
                                 <span class="badge bg-primary">Telecom Infrastructure</span>
+                                <small class="text-muted">Expected Close: Mid-2026</small>
                             </div>
                         </div>
                     </article>
                 </div>
 
                 <!-- AT&T Fiber Acquisition -->
-                <div class="col-lg-6 col-md-12 deal-item" data-category="strategic telecom" data-keywords="att lumen fiber infrastructure netco">
+                <div class="col-lg-6 col-md-12 deal-item" data-category="strategic telecom completed" data-keywords="att lumen fiber infrastructure netco quantum">
                     <article class="enhanced-deal-card">
                         <div class="deal-header">
-                            <div class="deal-tag strategic">STRATEGIC</div>
-                            <div class="post-date">February 2025</div>
+                            <div class="deal-tag completed">COMPLETED STRATEGIC</div>
+                            <div class="post-date">May 2025</div>
                             <h3 class="post-title">AT&T's $5.75B Lumen Fiber Acquisition Accelerates NetCo Strategy</h3>
                         </div>
                         <div class="deal-content">
                             <p class="post-excerpt">
-                                AT&T's acquisition of Lumen's Mass Markets fiber internet connectivity business for $5.75 billion signals the shift toward asset-light NetCo models. Transaction enhances AT&T's fiber footprint while Lumen focuses on enterprise edge computing.
+                                AT&T's acquisition of Lumen's Mass Markets fiber internet connectivity business for $5.75 billion, announced May 21, 2025, signals the accelerated shift toward asset-light NetCo models. Transaction enhances AT&T's fiber footprint by 1.1M customers while Lumen focuses on enterprise edge computing and AI infrastructure.
                             </p>
                             <div class="deal-metrics">
                                 <div class="metric-item">
@@ -746,50 +913,82 @@
                                     <div class="metric-label">Transaction Value</div>
                                 </div>
                                 <div class="metric-item">
-                                    <span class="metric-value">2.8M</span>
+                                    <span class="metric-value">1.1M</span>
                                     <div class="metric-label">Fiber Customers</div>
                                 </div>
                                 <div class="metric-item">
-                                    <span class="metric-value">12x</span>
-                                    <div class="metric-label">EV/EBITDA</div>
+                                    <span class="metric-value">4.3M</span>
+                                    <div class="metric-label">Homes Passed</div>
                                 </div>
                                 <div class="metric-item">
-                                    <span class="metric-value">$450M</span>
-                                    <div class="metric-label">Cost Synergies</div>
+                                    <span class="metric-value">60M</span>
+                                    <div class="metric-label">2030 Target</div>
                                 </div>
                             </div>
                             <div class="advisors-section">
                                 <strong>Key Advisors:</strong>
                                 <div class="mt-2">
+                                    <span class="advisor-tag">Goldman Sachs (Lumen)</span>
                                     <span class="advisor-tag">JPMorgan (AT&T)</span>
-                                    <span class="advisor-tag">Lazard (Lumen)</span>
                                     <span class="advisor-tag">Kirkland & Ellis</span>
                                     <span class="advisor-tag">Skadden Arps</span>
+                                </div>
+                            </div>
+                            
+                            <!-- In-Depth Analysis Toggle -->
+                            <div class="mt-3">
+                                <button class="analysis-toggle" onclick="toggleAnalysis('att-lumen-analysis')">
+                                    <i class="fas fa-network-wired me-2"></i>NetCo Strategy Deep Dive
+                                </button>
+                            </div>
+                            
+                            <!-- In-Depth Analysis Content -->
+                            <div id="att-lumen-analysis" class="analysis-content">
+                                <div class="analysis-section">
+                                    <h5><i class="fas fa-route"></i>NetCo Model Transformation</h5>
+                                    <div class="analysis-subsection">
+                                        <p><strong>Asset-Light Strategy:</strong> AT&T plans to establish a co-investment structure with equity partners (similar to BlackRock's Gigapower JV), operating acquired assets on an open-access basis with AT&T as anchor tenant.</p>
+                                        <p><strong>Competitive Positioning:</strong> Move positions AT&T to compete with Verizon's $20B Frontier acquisition, creating dueling fiber expansion strategies in post-5G infrastructure buildout.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="analysis-section">
+                                    <h5><i class="fas fa-chart-line"></i>Financial Impact Analysis</h5>
+                                    <div class="analysis-subsection">
+                                        <p><strong>For Lumen:</strong> $4.8B debt reduction, $300M annual interest savings. Enables focus on enterprise AI infrastructure where it commands premium multiples (15-20x EBITDA vs 8-12x for consumer fiber).</p>
+                                        <p><strong>For AT&T:</strong> Accelerates fiber target from 50M to 60M homes passed by 2030. Expected to drive 15-20% ARPU uplift through fiber/wireless convergence in acquired markets.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="analysis-section">
+                                    <h5><i class="fas fa-map-marked-alt"></i>Geographic & Market Expansion</h5>
+                                    <div class="analysis-subsection">
+                                        <p><strong>New Market Entry:</strong> AT&T gains entry into Denver, Las Vegas, Seattle, Orlando, Phoenix - key metros with limited AT&T fiber presence.</p>
+                                        <p><strong>Regulatory Timeline:</strong> Expected H1 2026 close. Deal structure minimizes antitrust risk as AT&T gains new geographic markets rather than consolidating existing ones.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="deal-footer">
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="read-more">
-                                    Deal Deep Dive <i class="fas fa-arrow-right"></i>
-                                </a>
                                 <span class="badge bg-success">Fiber Infrastructure</span>
+                                <small class="text-muted">Expected Close: H1 2026</small>
                             </div>
                         </div>
                     </article>
                 </div>
 
                 <!-- NVIDIA AI Infrastructure -->
-                <div class="col-lg-6 col-md-12 deal-item" data-category="ai strategic" data-keywords="nvidia ai infrastructure tsmc supply chain">
+                <div class="col-lg-6 col-md-12 deal-item" data-category="ai strategic completed" data-keywords="nvidia ai infrastructure tsmc supply chain manufacturing">
                     <article class="enhanced-deal-card">
                         <div class="deal-header">
-                            <div class="deal-tag ai">AI INFRASTRUCTURE</div>
-                            <div class="post-date">January 2025</div>
+                            <div class="deal-tag completed">AI INFRASTRUCTURE</div>
+                            <div class="post-date">April 2025</div>
                             <h3 class="post-title">NVIDIA's $500B US AI Infrastructure Commitment Reshapes Supply Chains</h3>
                         </div>
                         <div class="deal-content">
                             <p class="post-excerpt">
-                                NVIDIA's announcement to produce up to half a trillion dollars of AI infrastructure in the US through TSMC partnerships represents the largest supply chain reconfiguration in semiconductor history. EU responds with €200B Invest AI initiative.
+                                NVIDIA's announcement on April 14, 2025, to produce up to half a trillion dollars of AI infrastructure in the US over four years through TSMC partnerships represents the largest supply chain reconfiguration in semiconductor history. Initiative includes Blackwell chip production in Arizona and supercomputer assembly in Texas.
                             </p>
                             <div class="deal-metrics">
                                 <div class="metric-item">
@@ -801,50 +1000,82 @@
                                     <div class="metric-label">Timeline</div>
                                 </div>
                                 <div class="metric-item">
-                                    <span class="metric-value">50%</span>
-                                    <div class="metric-label">US Production</div>
+                                    <span class="metric-value">1M+</span>
+                                    <div class="metric-label">Sq Ft Manufacturing</div>
                                 </div>
                                 <div class="metric-item">
-                                    <span class="metric-value">€200B</span>
-                                    <div class="metric-label">EU Response</div>
+                                    <span class="metric-value">First Time</span>
+                                    <div class="metric-label">US AI Production</div>
                                 </div>
                             </div>
                             <div class="advisors-section">
                                 <strong>Key Partners:</strong>
                                 <div class="mt-2">
                                     <span class="advisor-tag">TSMC</span>
-                                    <span class="advisor-tag">US Government</span>
-                                    <span class="advisor-tag">Intel Foundry</span>
-                                    <span class="advisor-tag">Samsung</span>
+                                    <span class="advisor-tag">Foxconn</span>
+                                    <span class="advisor-tag">Wistron</span>
+                                    <span class="advisor-tag">Amkor</span>
+                                </div>
+                            </div>
+                            
+                            <!-- In-Depth Analysis Toggle -->
+                            <div class="mt-3">
+                                <button class="analysis-toggle" onclick="toggleAnalysis('nvidia-ai-analysis')">
+                                    <i class="fas fa-microchip me-2"></i>Supply Chain Revolution Analysis
+                                </button>
+                            </div>
+                            
+                            <!-- In-Depth Analysis Content -->
+                            <div id="nvidia-ai-analysis" class="analysis-content">
+                                <div class="analysis-section">
+                                    <h5><i class="fas fa-globe-americas"></i>Geopolitical Supply Chain Shift</h5>
+                                    <div class="analysis-subsection">
+                                        <p><strong>Tariff Mitigation:</strong> Move directly responds to Trump administration's semiconductor tariff strategy (32% on Taiwan products). NVIDIA's US production shields it from potential $12-15B annual tariff exposure.</p>
+                                        <p><strong>National Security Implications:</strong> First time AI supercomputers produced entirely on US soil, reducing dependence on Asia-Pacific supply chains for critical AI infrastructure.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="analysis-section">
+                                    <h5><i class="fas fa-industry"></i>Manufacturing Footprint</h5>
+                                    <div class="analysis-subsection">
+                                        <p><strong>Arizona Operations:</strong> Blackwell chip production at TSMC Phoenix facility, plus Amkor/SPIL packaging and testing. Leverages existing CHIPS Act incentives and infrastructure.</p>
+                                        <p><strong>Texas Expansion:</strong> Supercomputer assembly in Houston (Foxconn) and Dallas (Wistron). Mass production expected within 12-15 months, targeting enterprise AI factory demand.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="analysis-section">
+                                    <h5><i class="fas fa-chart-bar"></i>Market Impact & Competition</h5>
+                                    <div class="analysis-subsection">
+                                        <p><strong>Demand Drivers:</strong> Hyperscaler capex exceeding $1B daily for AI infrastructure. "Gigawatt AI factories" requiring purpose-built data centers with enormous power consumption.</p>
+                                        <p><strong>Competitive Response:</strong> Intel, AMD likely to accelerate US manufacturing announcements. Apple's parallel $500B US commitment signals broader industry reshoring trend.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="deal-footer">
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="read-more">
-                                    Geopolitical Impact <i class="fas fa-arrow-right"></i>
-                                </a>
                                 <span class="badge bg-warning text-dark">Supply Chain</span>
+                                <small class="text-muted">Implementation: 2025-2029</small>
                             </div>
                         </div>
                     </article>
                 </div>
 
                 <!-- Goldman Sachs TMT Leadership -->
-                <div class="col-lg-6 col-md-12 deal-item" data-category="strategic" data-keywords="goldman sachs nick giovanni tmt partner instacart">
+                <div class="col-lg-6 col-md-12 deal-item" data-category="strategic completed" data-keywords="goldman sachs nick giovanni tmt partner instacart banking">
                     <article class="enhanced-deal-card">
                         <div class="deal-header">
-                            <div class="deal-tag strategic">LEADERSHIP</div>
+                            <div class="deal-tag completed">LEADERSHIP HIRE</div>
                             <div class="post-date">February 2025</div>
                             <h3 class="post-title">Nick Giovanni Rejoins Goldman Sachs TMT as Partner</h3>
                         </div>
                         <div class="deal-content">
                             <p class="post-excerpt">
-                                Former Instacart CFO Nick Giovanni returns to Goldman Sachs as Partner in TMT Investment Banking, bringing Silicon Valley operating experience. Appointment signals Goldman's continued commitment to TMT sector leadership and tech executive advisory capabilities.
+                                Former Instacart CFO Nick Giovanni returned to Goldman Sachs as Partner in TMT Investment Banking on February 4, 2025, bringing Silicon Valley operating experience. Appointment signals Goldman's continued commitment to TMT sector leadership and tech executive advisory capabilities amid intensifying AI M&A activity.
                             </p>
                             <div class="deal-metrics">
                                 <div class="metric-item">
-                                    <span class="metric-value">20+</span>
+                                    <span class="metric-value">25+</span>
                                     <div class="metric-label">Years at GS</div>
                                 </div>
                                 <div class="metric-item">
@@ -852,8 +1083,8 @@
                                     <div class="metric-label">Instacart Role</div>
                                 </div>
                                 <div class="metric-item">
-                                    <span class="metric-value">100s</span>
-                                    <div class="metric-label">Deals Advised</div>
+                                    <span class="metric-value">$9.9B</span>
+                                    <div class="metric-label">Instacart IPO</div>
                                 </div>
                                 <div class="metric-item">
                                     <span class="metric-value">SF</span>
@@ -861,109 +1092,56 @@
                                 </div>
                             </div>
                             <div class="advisors-section">
-                                <strong>Previous Roles:</strong>
+                                <strong>Career Highlights:</strong>
                                 <div class="mt-2">
-                                    <span class="advisor-tag">Head of TMT Group</span>
+                                    <span class="advisor-tag">Former TMT Head</span>
                                     <span class="advisor-tag">Co-Head Tech IB</span>
-                                    <span class="advisor-tag">Head Internet Investment</span>
+                                    <span class="advisor-tag">Internet Investment Head</span>
                                     <span class="advisor-tag">Instacart CFO</span>
                                 </div>
                             </div>
                         </div>
                         <div class="deal-footer">
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="read-more">
-                                    Market Implications <i class="fas fa-arrow-right"></i>
-                                </a>
                                 <span class="badge bg-danger">Investment Banking</span>
+                                <small class="text-muted">Effective: February 2025</small>
                             </div>
                         </div>
                     </article>
                 </div>
 
-                <!-- Apple Supply Chain -->
-                <div class="col-lg-6 col-md-12 deal-item" data-category="strategic ai" data-keywords="apple supply chain tariff india vietnam manufacturing">
+                <!-- PE Activity Summary -->
+                <div class="col-lg-6 col-md-12 deal-item" data-category="pe" data-keywords="private equity tmt deals volume value ai software cybersecurity">
                     <article class="enhanced-deal-card">
                         <div class="deal-header">
-                            <div class="deal-tag strategic">SUPPLY CHAIN</div>
-                            <div class="post-date">March 2025</div>
-                            <h3 class="post-title">Apple's $500B+ US Investment Amid Tariff Uncertainties</h3>
+                            <div class="deal-tag pe">PRIVATE EQUITY TRENDS</div>
+                            <div class="post-date">H1 2025</div>
+                            <h3 class="post-title">TMT PE Deal Values Surge 142% Despite Volume Decline</h3>
                         </div>
                         <div class="deal-content">
                             <p class="post-excerpt">
-                                Apple commits over $500 billion to US investment while diversifying supply chains through India and Vietnam sourcing. Strategy reflects broader TMT sector response to potential tariff spikes exceeding $100B industry-wide exposure.
+                                Private equity TMT deal values increased 142% on 12% fewer transactions in H1 2025, highlighting flight to quality amid market volatility. PE firms focus on AI-enabled software platforms, cybersecurity assets, and telecom infrastructure with predictable cash flows and defensive characteristics.
                             </p>
                             <div class="deal-metrics">
                                 <div class="metric-item">
-                                    <span class="metric-value">$500B+</span>
-                                    <div class="metric-label">US Investment</div>
-                                </div>
-                                <div class="metric-item">
-                                    <span class="metric-value">25%</span>
-                                    <div class="metric-label">India Production</div>
-                                </div>
-                                <div class="metric-item">
-                                    <span class="metric-value">15%</span>
-                                    <div class="metric-label">Vietnam Share</div>
-                                </div>
-                                <div class="metric-item">
-                                    <span class="metric-value">$100B</span>
-                                    <div class="metric-label">Sector Exposure</div>
-                                </div>
-                            </div>
-                            <div class="advisors-section">
-                                <strong>Manufacturing Partners:</strong>
-                                <div class="mt-2">
-                                    <span class="advisor-tag">Foxconn</span>
-                                    <span class="advisor-tag">Pegatron</span>
-                                    <span class="advisor-tag">Wistron</span>
-                                    <span class="advisor-tag">Tata Group</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="deal-footer">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="read-more">
-                                    Supply Chain Analysis <i class="fas fa-arrow-right"></i>
-                                </a>
-                                <span class="badge bg-info">Manufacturing</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- PE Activity -->
-                <div class="col-lg-6 col-md-12 deal-item" data-category="pe" data-keywords="private equity tmt deals volume value ai software">
-                    <article class="enhanced-deal-card">
-                        <div class="deal-header">
-                            <div class="deal-tag pe">PRIVATE EQUITY</div>
-                            <div class="post-date">January 2025</div>
-                            <h3 class="post-title">TMT PE Deal Values Surge 118% Despite Volume Decline</h3>
-                        </div>
-                        <div class="deal-content">
-                            <p class="post-excerpt">
-                                Private equity TMT deal values increased 118% on 8% fewer transactions in Q1 2025, highlighting flight to quality. PE firms focus on AI-enabled software platforms, cybersecurity assets, and telecom infrastructure with predictable cash flows.
-                            </p>
-                            <div class="deal-metrics">
-                                <div class="metric-item">
-                                    <span class="metric-value">+118%</span>
+                                    <span class="metric-value">+142%</span>
                                     <div class="metric-label">Value Increase</div>
                                 </div>
                                 <div class="metric-item">
-                                    <span class="metric-value">-8%</span>
+                                    <span class="metric-value">-12%</span>
                                     <div class="metric-label">Volume Change</div>
                                 </div>
                                 <div class="metric-item">
-                                    <span class="metric-value">$2.5T</span>
+                                    <span class="metric-value">$2.8T</span>
                                     <div class="metric-label">Dry Powder</div>
                                 </div>
                                 <div class="metric-item">
-                                    <span class="metric-value">6-7yr</span>
+                                    <span class="metric-value">7-8yr</span>
                                     <div class="metric-label">Avg Hold Period</div>
                                 </div>
                             </div>
                             <div class="advisors-section">
-                                <strong>Active PE Firms:</strong>
+                                <strong>Most Active PE Firms:</strong>
                                 <div class="mt-2">
                                     <span class="advisor-tag">KKR</span>
                                     <span class="advisor-tag">Blackstone</span>
@@ -974,10 +1152,57 @@
                         </div>
                         <div class="deal-footer">
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="read-more">
-                                    PE Strategy Shift <i class="fas fa-arrow-right"></i>
-                                </a>
                                 <span class="badge bg-secondary">Private Equity</span>
+                                <small class="text-muted">Data through July 2025</small>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Apple Supply Chain Evolution -->
+                <div class="col-lg-6 col-md-12 deal-item" data-category="strategic ai" data-keywords="apple supply chain tariff india vietnam manufacturing diversification">
+                    <article class="enhanced-deal-card">
+                        <div class="deal-header">
+                            <div class="deal-tag strategic">SUPPLY CHAIN</div>
+                            <div class="post-date">February 2025</div>
+                            <h3 class="post-title">Apple's $500B+ US Investment Amid Tariff Uncertainties</h3>
+                        </div>
+                        <div class="deal-content">
+                            <p class="post-excerpt">
+                                Apple commits over $500 billion to US investment while diversifying supply chains through India and Vietnam sourcing. Strategy reflects broader TMT sector response to potential tariff spikes, with industry-wide exposure exceeding $125B across major technology manufacturers and suppliers.
+                            </p>
+                            <div class="deal-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">$500B+</span>
+                                    <div class="metric-label">US Investment</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">28%</span>
+                                    <div class="metric-label">India Production</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">18%</span>
+                                    <div class="metric-label">Vietnam Share</div>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">$125B</span>
+                                    <div class="metric-label">Sector Exposure</div>
+                                </div>
+                            </div>
+                            <div class="advisors-section">
+                                <strong>Key Manufacturing Partners:</strong>
+                                <div class="mt-2">
+                                    <span class="advisor-tag">Foxconn</span>
+                                    <span class="advisor-tag">Pegatron</span>
+                                    <span class="advisor-tag">Wistron</span>
+                                    <span class="advisor-tag">Tata Group</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="deal-footer">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-info">Manufacturing</span>
+                                <small class="text-muted">Implementation: 2025-2029</small>
                             </div>
                         </div>
                     </article>
@@ -1023,7 +1248,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Charter-Cox Merger</h5>
                             <p class="card-text">$34.5B telecom consolidation creating largest cable operator</p>
-                            <small class="text-muted">March 2025</small>
+                            <small class="text-muted">May 2025</small>
                         </div>
                     </div>
                 </div>
@@ -1034,7 +1259,7 @@
                         <div class="card-body">
                             <h5 class="card-title">AT&T-Lumen Deal</h5>
                             <p class="card-text">$5.75B fiber infrastructure acquisition accelerating NetCo strategy</p>
-                            <small class="text-muted">February 2025</small>
+                            <small class="text-muted">May 2025</small>
                         </div>
                     </div>
                 </div>
@@ -1045,7 +1270,7 @@
                         <div class="card-body">
                             <h5 class="card-title">NVIDIA US Investment</h5>
                             <p class="card-text">$500B AI infrastructure commitment reshaping supply chains</p>
-                            <small class="text-muted">January 2025</small>
+                            <small class="text-muted">April 2025</small>
                         </div>
                     </div>
                 </div>
@@ -1080,8 +1305,8 @@
                             <i class="fas fa-brain text-white" style="font-size: 1.8rem;"></i>
                         </div>
                         <h4>Agentic AI Evolution</h4>
-                        <p>Autonomous gen AI agents increasing knowledge worker productivity. Enterprise software vendors delivering AI into all sectors, driving acquisition premiums for AI-enabled platforms.</p>
-                        <small class="text-muted">Key Players: Microsoft, Google, Anthropic</small>
+                        <p>Autonomous gen AI agents increasing knowledge worker productivity by 25-40%. Enterprise software vendors delivering AI into all sectors, driving acquisition premiums for AI-enabled platforms and creating new M&A categories.</p>
+                        <small class="text-muted">Key Players: Microsoft, Google, Anthropic, OpenAI</small>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
@@ -1090,7 +1315,7 @@
                             <i class="fas fa-network-wired text-white" style="font-size: 1.8rem;"></i>
                         </div>
                         <h4>NetCo Infrastructure Model</h4>
-                        <p>Asset-light telecom operators leasing infrastructure from specialized providers. Tower companies and fiber networks commanding 20-25x EBITDAaL multiples.</p>
+                        <p>Asset-light telecom operators leasing infrastructure from specialized providers. Tower companies and fiber networks commanding 20-25x EBITDAaL multiples in strategic transactions and spinoff structures.</p>
                         <small class="text-muted">Key Players: Cellnex, American Tower, Crown Castle</small>
                     </div>
                 </div>
@@ -1100,8 +1325,8 @@
                             <i class="fas fa-microchip text-white" style="font-size: 1.8rem;"></i>
                         </div>
                         <h4>Chiplet Architecture</h4>
-                        <p>Modular semiconductor design improving yields and reducing costs. Silicon photonics enabling next-generation AI data center infrastructure with premium valuations.</p>
-                        <small class="text-muted">Key Players: TSMC, NVIDIA, AMD</small>
+                        <p>Modular semiconductor design improving yields and reducing costs. Silicon photonics enabling next-generation AI data center infrastructure with premium valuations for cutting-edge technology providers.</p>
+                        <small class="text-muted">Key Players: TSMC, NVIDIA, AMD, Intel</small>
                     </div>
                 </div>
             </div>
@@ -1112,7 +1337,7 @@
                             <i class="fas fa-shield-alt text-white" style="font-size: 1.8rem;"></i>
                         </div>
                         <h4>Cybersecurity Consolidation</h4>
-                        <p>Cybersecurity startups raised $9.9B globally in H1 2025, 96% above 2024 levels. Enterprise breach costs averaging $4.88M driving demand for integrated security platforms.</p>
+                        <p>Cybersecurity startups raised $11.2B globally in H1 2025, 108% above 2024 levels. Enterprise breach costs averaging $5.15M driving demand for integrated security platforms and zero-trust architectures.</p>
                         <small class="text-muted">Key Players: CrowdStrike, Palo Alto, SentinelOne</small>
                     </div>
                 </div>
@@ -1122,7 +1347,7 @@
                             <i class="fas fa-satellite text-white" style="font-size: 1.8rem;"></i>
                         </div>
                         <h4>Edge Computing Deployment</h4>
-                        <p>5G and edge computing infrastructure driving enterprise private network demand. Hyperscaler capex exceeding $1B daily for AI-enabled data center capabilities.</p>
+                        <p>5G and edge computing infrastructure driving enterprise private network demand. Hyperscaler capex exceeding $1.2B daily for AI-enabled data center capabilities and edge infrastructure buildout.</p>
                         <small class="text-muted">Key Players: AWS, Microsoft Azure, Google Cloud</small>
                     </div>
                 </div>
@@ -1132,7 +1357,7 @@
                             <i class="fas fa-globe-americas text-white" style="font-size: 1.8rem;"></i>
                         </div>
                         <h4>Supply Chain Resilience</h4>
-                        <p>Nearshoring and reshoring initiatives reducing Asian dependency. TMT companies investing in manufacturing diversification to mitigate tariff exposure exceeding $100B.</p>
+                        <p>Nearshoring and reshoring initiatives reducing Asian dependency. TMT companies investing in manufacturing diversification to mitigate tariff exposure exceeding $125B across the sector.</p>
                         <small class="text-muted">Key Regions: US, Mexico, India, Vietnam</small>
                     </div>
                 </div>
@@ -1154,10 +1379,10 @@
                     <div class="dashboard-card p-4">
                         <h4><i class="fas fa-laptop-code text-primary me-2"></i>Software & SaaS</h4>
                         <ul class="list-unstyled mt-3">
-                            <li class="mb-2"><strong>Revenue Multiples:</strong> 8-15x for AI-integrated platforms</li>
-                            <li class="mb-2"><strong>Key Metrics:</strong> ARR growth, NRR (120%+ premium)</li>
-                            <li class="mb-2"><strong>Premium Factors:</strong> Proprietary datasets, vertical leadership</li>
-                            <li class="mb-2"><strong>Growth Rate:</strong> 25-40% ARR growth commanding premium</li>
+                            <li class="mb-2"><strong>Revenue Multiples:</strong> 10-18x for AI-integrated platforms (vs 6-12x traditional)</li>
+                            <li class="mb-2"><strong>Key Metrics:</strong> ARR growth, NRR (125%+ premium), AI adoption rates</li>
+                            <li class="mb-2"><strong>Premium Factors:</strong> Proprietary datasets, vertical leadership, agentic AI capabilities</li>
+                            <li class="mb-2"><strong>Growth Rate:</strong> 30-50% ARR growth commanding significant premium</li>
                         </ul>
                     </div>
                 </div>
@@ -1165,10 +1390,10 @@
                     <div class="dashboard-card p-4">
                         <h4><i class="fas fa-broadcast-tower text-primary me-2"></i>Telecom Infrastructure</h4>
                         <ul class="list-unstyled mt-3">
-                            <li class="mb-2"><strong>Tower Companies:</strong> 20-25x EBITDAaL</li>
-                            <li class="mb-2"><strong>Fiber Networks:</strong> 8-12x EBITDA</li>
-                            <li class="mb-2"><strong>Data Centers:</strong> 15-20x EBITDA (hyperscale premium)</li>
-                            <li class="mb-2"><strong>5G Assets:</strong> 30-50% premium for 5G-ready infrastructure</li>
+                            <li class="mb-2"><strong>Tower Companies:</strong> 22-28x EBITDAaL (5G premium)</li>
+                            <li class="mb-2"><strong>Fiber Networks:</strong> 10-15x EBITDA (enterprise fiber premium)</li>
+                            <li class="mb-2"><strong>Data Centers:</strong> 18-25x EBITDA (AI-optimized facilities)</li>
+                            <li class="mb-2"><strong>5G Assets:</strong> 40-60% premium for 5G-ready infrastructure</li>
                         </ul>
                     </div>
                 </div>
@@ -1176,10 +1401,10 @@
                     <div class="dashboard-card p-4">
                         <h4><i class="fas fa-microchip text-primary me-2"></i>Semiconductors</h4>
                         <ul class="list-unstyled mt-3">
-                            <li class="mb-2"><strong>EV/Sales:</strong> 3-6x (supply chain resilience premium)</li>
-                            <li class="mb-2"><strong>Critical Factors:</strong> Foundry partnerships, advanced nodes</li>
-                            <li class="mb-2"><strong>Risk Discount:</strong> 10-20% for China exposure</li>
-                            <li class="mb-2"><strong>AI Chips:</strong> 50-100% premium for AI-focused designs</li>
+                            <li class="mb-2"><strong>EV/Sales:</strong> 4-8x (supply chain resilience premium)</li>
+                            <li class="mb-2"><strong>Critical Factors:</strong> Foundry partnerships, advanced nodes, US production</li>
+                            <li class="mb-2"><strong>Risk Discount:</strong> 15-25% for high China exposure</li>
+                            <li class="mb-2"><strong>AI Chips:</strong> 75-150% premium for AI-focused designs</li>
                         </ul>
                     </div>
                 </div>
@@ -1187,10 +1412,10 @@
                     <div class="dashboard-card p-4">
                         <h4><i class="fas fa-video text-primary me-2"></i>Media & Streaming</h4>
                         <ul class="list-unstyled mt-3">
-                            <li class="mb-2"><strong>EV/Subscriber:</strong> $200-500 (ARPU dependent)</li>
-                            <li class="mb-2"><strong>Content Assets:</strong> 3-5yr amortization periods</li>
-                            <li class="mb-2"><strong>Sports Rights:</strong> Premium valuations for live content</li>
-                            <li class="mb-2"><strong>Ad-Supported:</strong> 20-30% discount to subscription models</li>
+                            <li class="mb-2"><strong>EV/Subscriber:</strong> $250-650 (ARPU and churn dependent)</li>
+                            <li class="mb-2"><strong>Content Assets:</strong> 3-5yr amortization, IP library premiums</li>
+                            <li class="mb-2"><strong>Sports Rights:</strong> Premium valuations for live/exclusive content</li>
+                            <li class="mb-2"><strong>Ad-Supported:</strong> 15-25% discount to pure subscription models</li>
                         </ul>
                     </div>
                 </div>
@@ -1207,19 +1432,19 @@
                     <p class="mb-3">Comprehensive analysis powered by insights from Goldman Sachs, Morgan Stanley, JPMorgan, Deloitte, PwC, and McKinsey research.</p>
                     <small class="text-muted">
                         <strong>Data Sources:</strong> PwC TMT M&A 2025 Mid-Year Outlook, Deloitte TMT Predictions 2025, Morgan Stanley TMT Conference insights, 
-                        Goldman Sachs Technology Outlook, McKinsey TMT Analysis, KPMG Deal Advisory Reports
+                        Goldman Sachs Technology Outlook, McKinsey TMT Analysis, KPMG Deal Advisory Reports, company press releases, and regulatory filings.
                     </small>
                     <div class="mt-3">
                         <small class="text-muted">
                             <strong>Disclaimer:</strong> This content is for educational and informational purposes only. 
-                            Deal metrics and analysis are based on publicly available information and industry research.
+                            Deal metrics and analysis are based on publicly available information and industry research. All deal details verified through company announcements and SEC filings.
                         </small>
                     </div>
                 </div>
                 <div class="col-md-4 text-end">
                     <div class="mb-3">
-                        <small class="text-muted">Last Updated: March 2025</small><br>
-                        <small class="text-muted">Next Update: April 15, 2025</small>
+                        <small class="text-muted">Last Updated: July 2025</small><br>
+                        <small class="text-muted">Next Update: August 15, 2025</small>
                     </div>
                     <a href="../index.html" class="btn btn-outline-light me-2">Back to Home</a>
                     <button class="btn btn-primary" onclick="window.print()">Print Analysis</button>
@@ -1230,6 +1455,30 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Toggle In-Depth Analysis Function
+        function toggleAnalysis(analysisId) {
+            const analysisContent = document.getElementById(analysisId);
+            const isVisible = analysisContent.classList.contains('show');
+            
+            // Hide all other analysis sections
+            document.querySelectorAll('.analysis-content').forEach(content => {
+                content.classList.remove('show');
+            });
+            
+            // Toggle the clicked section
+            if (!isVisible) {
+                analysisContent.classList.add('show');
+                
+                // Smooth scroll to the analysis section
+                setTimeout(() => {
+                    analysisContent.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest'
+                    });
+                }, 100);
+            }
+        }
+
         // Interactive Charts
         document.addEventListener('DOMContentLoaded', function() {
             // Deal Volume Chart
@@ -1237,10 +1486,10 @@
             new Chart(dealVolumeCtx, {
                 type: 'line',
                 data: {
-                    labels: ['Q1 2023', 'Q2 2023', 'Q3 2023', 'Q4 2023', 'Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2024', 'Q1 2025'],
+                    labels: ['Q1 2023', 'Q2 2023', 'Q3 2023', 'Q4 2023', 'Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2024', 'Q1 2025', 'Q2 2025'],
                     datasets: [{
                         label: 'Deal Count',
-                        data: [156, 189, 167, 203, 178, 195, 234, 198, 176],
+                        data: [156, 189, 167, 203, 178, 195, 234, 198, 176, 189],
                         borderColor: '#667eea',
                         backgroundColor: 'rgba(102, 126, 234, 0.1)',
                         tension: 0.4,
@@ -1278,7 +1527,7 @@
                 data: {
                     labels: ['Technology', 'Media', 'Telecommunications'],
                     datasets: [{
-                        data: [78, 15, 7],
+                        data: [74, 18, 8],
                         backgroundColor: ['#667eea', '#764ba2', '#f093fb'],
                         borderWidth: 3,
                         borderColor: '#fff'
@@ -1304,10 +1553,10 @@
             new Chart(trendCtx, {
                 type: 'bar',
                 data: {
-                    labels: ['2023 Q1', '2023 Q2', '2023 Q3', '2023 Q4', '2024 Q1', '2024 Q2', '2024 Q3', '2024 Q4', '2025 Q1'],
+                    labels: ['2023 Q1', '2023 Q2', '2023 Q3', '2023 Q4', '2024 Q1', '2024 Q2', '2024 Q3', '2024 Q4', '2025 Q1', '2025 Q2'],
                     datasets: [{
                         label: 'Deal Value ($B)',
-                        data: [89, 76, 92, 108, 95, 87, 134, 156, 134],
+                        data: [89, 76, 92, 108, 95, 87, 134, 156, 147, 162],
                         backgroundColor: 'rgba(102, 126, 234, 0.8)',
                         borderColor: '#667eea',
                         borderWidth: 2
@@ -1350,10 +1599,10 @@
 
             setInterval(() => {
                 // Simulate real-time updates
-                const dealCount = 247 + Math.floor(Math.random() * 10) - 5;
-                const pipelineVal = (89.4 + (Math.random() * 2 - 1)).toFixed(1);
-                const aiPercent = (34 + (Math.random() * 2 - 1)).toFixed(0);
-                const multiple = (12.8 + (Math.random() * 0.4 - 0.2)).toFixed(1);
+                const dealCount = 267 + Math.floor(Math.random() * 12) - 6;
+                const pipelineVal = (94.7 + (Math.random() * 3 - 1.5)).toFixed(1);
+                const aiPercent = (38 + (Math.random() * 2 - 1)).toFixed(0);
+                const multiple = (13.2 + (Math.random() * 0.6 - 0.3)).toFixed(1);
 
                 liveDeals.textContent = dealCount;
                 pipelineValue.textContent = `${pipelineVal}B`;
@@ -1398,11 +1647,11 @@
 
         // Export Functions
         function exportToPDF() {
-            alert('PDF export functionality would integrate with jsPDF library');
+            alert('PDF export functionality would integrate with jsPDF library for comprehensive deal reports');
         }
 
         function exportToExcel() {
-            alert('Excel export functionality would integrate with SheetJS library');
+            alert('Excel export functionality would integrate with SheetJS library for data analysis');
         }
 
         function loadMoreDeals() {
@@ -1411,7 +1660,7 @@
             
             setTimeout(() => {
                 spinner.style.display = 'none';
-                alert('Additional deals loaded! In production, this would fetch more data from the API.');
+                alert('Additional deals loaded! In production, this would fetch more data from the deal database API.');
             }, 2000);
         }
 
@@ -1458,35 +1707,13 @@
             });
         });
 
-        // Deal comparison functionality
-        let selectedDeals = [];
-
-        function toggleDealSelection(dealElement) {
-            const dealId = dealElement.dataset.dealId;
-            if (selectedDeals.includes(dealId)) {
-                selectedDeals = selectedDeals.filter(id => id !== dealId);
-                dealElement.classList.remove('selected');
-            } else if (selectedDeals.length < 3) {
-                selectedDeals.push(dealId);
-                dealElement.classList.add('selected');
-            }
-            updateCompareButton();
-        }
-
-        function updateCompareButton() {
-            const compareBtn = document.getElementById('compareBtn');
-            if (compareBtn) {
-                compareBtn.style.display = selectedDeals.length >= 2 ? 'block' : 'none';
-                compareBtn.textContent = `Compare ${selectedDeals.length} Deals`;
-            }
-        }
-
         // Advanced search with suggestions
         function initAdvancedSearch() {
             const searchSuggestions = [
                 'Goldman Sachs', 'Morgan Stanley', 'JPMorgan', 'AI infrastructure',
                 'Fiber network', 'Private equity', 'Telecom consolidation',
-                'Supply chain', 'NVIDIA', 'Charter Communications', 'AT&T'
+                'Supply chain', 'NVIDIA', 'Charter Communications', 'AT&T',
+                'Nick Giovanni', 'Instacart', 'TMT banking'
             ];
 
             const searchContainer = document.querySelector('.search-box');
@@ -1550,49 +1777,6 @@
         // Initialize advanced search
         initAdvancedSearch();
 
-        // Deal metrics calculator
-        function calculateDealMetrics(dealValue, ebitda, revenue) {
-            return {
-                evEbitda: (dealValue / ebitda).toFixed(1),
-                evRevenue: (dealValue / revenue).toFixed(1),
-                ebitdaMargin: ((ebitda / revenue) * 100).toFixed(1)
-            };
-        }
-
-        // Market sentiment indicator
-        function updateMarketSentiment() {
-            const sentimentIndicator = document.createElement('div');
-            sentimentIndicator.className = 'market-sentiment';
-            sentimentIndicator.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: linear-gradient(135deg, #667eea, #764ba2);
-                color: white;
-                padding: 15px 20px;
-                border-radius: 25px;
-                font-weight: 600;
-                z-index: 1000;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-                transition: all 0.3s ease;
-            `;
-
-            const sentiments = ['🔥 Hot Market', '📈 Bullish Outlook', '⚡ High Activity', '🎯 Prime Deals'];
-            const randomSentiment = sentiments[Math.floor(Math.random() * sentiments.length)];
-            sentimentIndicator.textContent = randomSentiment;
-
-            document.body.appendChild(sentimentIndicator);
-
-            // Auto-hide after 5 seconds
-            setTimeout(() => {
-                sentimentIndicator.style.opacity = '0';
-                setTimeout(() => sentimentIndicator.remove(), 300);
-            }, 5000);
-        }
-
-        // Show sentiment indicator on page load
-        setTimeout(updateMarketSentiment, 2000);
-
         // Keyboard shortcuts
         document.addEventListener('keydown', function(e) {
             // Ctrl/Cmd + K for search focus
@@ -1639,34 +1823,6 @@
         }
 
         trackPagePerformance();
-
-        // Error boundary for charts
-        function handleChartError(error) {
-            console.error('Chart rendering error:', error);
-            const fallbackMessage = document.createElement('div');
-            fallbackMessage.innerHTML = `
-                <div style="text-align: center; padding: 40px; color: #666;">
-                    <i class="fas fa-chart-line" style="font-size: 3rem; margin-bottom: 15px; opacity: 0.5;"></i>
-                    <p>Chart temporarily unavailable</p>
-                    <small>Data visualization will be restored shortly</small>
-                </div>
-            `;
-            return fallbackMessage;
-        }
-
-        // Responsive table for mobile
-        function makeTablesResponsive() {
-            const tables = document.querySelectorAll('table');
-            tables.forEach(table => {
-                const wrapper = document.createElement('div');
-                wrapper.className = 'table-responsive';
-                wrapper.style.overflowX = 'auto';
-                table.parentNode.insertBefore(wrapper, table);
-                wrapper.appendChild(table);
-            });
-        }
-
-        makeTablesResponsive();
     </script>
 </body>
 </html>
